@@ -8,6 +8,8 @@ var multiplication_rate : float
 var BORDER_DELTA : float = 10
 var BORDER_SUSPENSION : float = 0.9
 
+const sprite_texture = preload("res://assets/icon.svg")
+
 var color : float
 var health : float
 
@@ -25,7 +27,9 @@ func _init() -> void:
 	position.y = randf_range(0, window_size.y)
 
 func _ready() -> void:
-	pass
+	var current_texture = sprite_texture
+	print ("texture: ", current_texture)
+	$Sprite2D.set_texture(current_texture)
 
 func _process(delta: float) -> void:
 	window_size = DisplayServer.window_get_size()

@@ -6,6 +6,9 @@
 [ext_resource type="PackedScene" uid="uid://256s4bbi2557" path="res://scenes/game/killers/sanitizer.tscn" id="3_lfrn8"]
 [ext_resource type="PackedScene" uid="uid://c3tj650y80uvk" path="res://scenes/game/organisms/amoeba.tscn" id="4_kelw5"]
 
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_oyn23"]
+size = Vector2(175, 463)
+
 [node name="Game" type="Node2D" unique_id=683943009]
 script = ExtResource("1_0sr1o")
 amoeba_scene = ExtResource("4_kelw5")
@@ -34,5 +37,11 @@ script = ExtResource("2_0sr1o")
 [node name="SpawnTimer" type="Timer" parent="." unique_id=1733036146]
 wait_time = 0.2
 autostart = true
+
+[node name="StaticBody2D" type="StaticBody2D" parent="." unique_id=558113497]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="StaticBody2D" unique_id=677955833]
+position = Vector2(783, 326)
+shape = SubResource("RectangleShape2D_oyn23")
 
 [connection signal="timeout" from="SpawnTimer" to="." method="_on_spawn_timer_timeout"]

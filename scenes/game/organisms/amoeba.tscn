@@ -28,3 +28,5 @@ grow_vertical = 2
 color = Color(0, 1, 0.627451, 0.67058825)
 
 [node name="Sprite2D" type="Sprite2D" parent="." unique_id=304902166]
+position = Vector2(-4.7683716e-07, 2.3841858e-07)
+scale = Vector2(0.078125, 0.15624999)
