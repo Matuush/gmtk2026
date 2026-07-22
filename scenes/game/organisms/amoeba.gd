@@ -1,17 +1,4 @@
-class_name amoeba extends RigidBody2D
-
-var window_size : Vector2 = DisplayServer.window_get_size()
-var social_factor : float
-var acceleration_factor : float = 1
-var max_health : float
-var multiplication_rate : float
-var BORDER_DELTA : float = 10
-var BORDER_SUSPENSION : float = 0.9
-
-const sprite_texture = preload("res://assets/icon.svg")
-
-var color : float
-var health : float
+class_name amoeba extends organism
 
 func die() -> void:
 	var index = game.enemies.find($".")
@@ -23,18 +10,14 @@ func die() -> void:
 	pass
 	
 func _init() -> void:
+	sprite_texture = preload("res://assets/icon.svg")
 	position.x = randf_range(0, window_size.x)
 	position.y = randf_range(0, window_size.y)
 
-func _ready() -> void:
-	var current_texture = sprite_texture
-	print ("texture: ", current_texture)
-	$Sprite2D.set_texture(current_texture)
-
-func _process(delta: float) -> void:
+func _process(_delta: float) -> void:
 	window_size = DisplayServer.window_get_size()
 	
-func _physics_process(delta: float) -> void:
+func _physics_process(_delta: float) -> void:
 	linear_velocity += Vector2(
 		randf_range(-acceleration_factor, acceleration_factor),
 		randf_range(-acceleration_factor, acceleration_factor)

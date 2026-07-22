@@ -6,7 +6,6 @@ func _ready() -> void:
 	$CollisionShape2D.shape.radius = sanitizer_size
 	print("Made at ", position)
 
-
 func _on_duration_timer_timeout() -> void:
 	var parent = get_parent()
 	parent.remove_child($".")
@@ -15,5 +14,5 @@ func _on_duration_timer_timeout() -> void:
 
 func _on_body_entered(body: Node2D) -> void:
 	print("Body: ", body.position, "entered the sanitizer arr")
-	if is_instance_of(body, amoeba):
+	if is_instance_of(body, organism):
 		body.die()
