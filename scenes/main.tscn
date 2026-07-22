@@ -1,0 +1,25 @@
+[gd_scene format=3 uid="uid://di7lv4icyqso4"]
+
+[ext_resource type="Texture2D" uid="uid://bo7jop332xjnt" path="res://assets/icon.svg" id="1_o5qli"]
+[ext_resource type="Script" uid="uid://c7sqwgqvx4y46" path="res://scenes/sprite_2d.gd" id="2_0wfyh"]
+
+[node name="Main" type="Node2D" unique_id=727505612]
+
+[node name="ColorRect" type="ColorRect" parent="." unique_id=1945565374]
+offset_right = 1280.0
+offset_bottom = 720.0
+color = Color(0.7532877, 0.91385627, 0.97304934, 1)
+
+[node name="Label" type="Label" parent="." unique_id=855562193]
+offset_left = 31.0
+offset_top = 33.0
+offset_right = 371.0
+offset_bottom = 116.0
+theme_override_colors/font_color = Color(0, 0, 0, 1)
+theme_override_font_sizes/font_size = 40
+text = "dzien dobry svete"
+
+[node name="Sprite2D" type="Sprite2D" parent="." unique_id=1775835316]
+position = Vector2(513, 287)
+texture = ExtResource("1_o5qli")
+script = ExtResource("2_0wfyh")
