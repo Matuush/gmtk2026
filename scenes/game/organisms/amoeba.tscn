@@ -1,0 +1,20 @@
+[gd_scene format=3 uid="uid://c3tj650y80uvk"]
+
+[ext_resource type="Script" uid="uid://ukoobdr4bol4" path="res://scenes/game/organisms/amoeba.gd" id="1_gtxip"]
+
+[sub_resource type="CapsuleShape2D" id="CapsuleShape2D_oyn23"]
+radius = 50.0
+height = 200.0
+
+[node name="Amoeba" type="RigidBody2D" unique_id=1900628124]
+gravity_scale = 0.0
+script = ExtResource("1_gtxip")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=1755495078]
+shape = SubResource("CapsuleShape2D_oyn23")
+
+[node name="ColorRect" type="ColorRect" parent="." unique_id=1175198685]
+offset_left = -50.0
+offset_top = -50.0
+offset_right = 50.0
+offset_bottom = 50.0
