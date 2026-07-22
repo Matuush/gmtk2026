@@ -3,11 +3,13 @@
 [ext_resource type="Script" uid="uid://cbet5unfc6y0i" path="res://scenes/game/game.gd" id="1_0sr1o"]
 [ext_resource type="Texture2D" uid="uid://bo7jop332xjnt" path="res://assets/icon.svg" id="1_7h61r"]
 [ext_resource type="Script" uid="uid://c7sqwgqvx4y46" path="res://scenes/sprite_2d.gd" id="2_0sr1o"]
+[ext_resource type="PackedScene" uid="uid://256s4bbi2557" path="res://scenes/game/killers/sanitizer.tscn" id="3_lfrn8"]
 [ext_resource type="PackedScene" uid="uid://c3tj650y80uvk" path="res://scenes/game/organisms/amoeba.tscn" id="4_kelw5"]
 
 [node name="Game" type="Node2D" unique_id=683943009]
 script = ExtResource("1_0sr1o")
 amoeba_scene = ExtResource("4_kelw5")
+sanitizer_scene = ExtResource("3_lfrn8")
 
 [node name="ColorRect" type="ColorRect" parent="." unique_id=1391499599]
 visible = false
