@@ -1,10 +1,10 @@
-extends Node2D
+class_name game extends Node2D
 
-var AMOEBA_LIMIT : int = 20
+var AMOEBA_LIMIT : int = 6
 
 var my_time : float = 0.0
-var enemies : Array = []
-var killers : Array = []
+static var enemies : Array = []
+static var killers : Array = []
 var window_size : Vector2 = DisplayServer.window_get_size()
 @export var amoeba_scene : PackedScene
 @export var sanitizer_scene : PackedScene

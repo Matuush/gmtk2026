@@ -2,7 +2,7 @@ class_name amoeba extends RigidBody2D
 
 var window_size : Vector2 = DisplayServer.window_get_size()
 var social_factor : float
-var acceleration_factor : float = 5
+var acceleration_factor : float = 1
 var max_health : float
 var multiplication_rate : float
 var BORDER_DELTA : float = 10
@@ -12,6 +12,12 @@ var color : float
 var health : float
 
 func die() -> void:
+	var index = game.enemies.find($".")
+	game.enemies.remove_at(index)
+	var parent_scene = get_parent()
+	parent_scene.remove_child($".")
+	queue_free()
+	print("Index: ", index)
 	pass
 	
 func _init() -> void:

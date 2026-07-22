@@ -15,6 +15,5 @@ func _on_duration_timer_timeout() -> void:
 
 func _on_body_entered(body: Node2D) -> void:
 	print("Body: ", body.position, "entered the sanitizer arr")
-	var body_parent = body.get_parent()
-	body_parent.remove_child(body)
-	body.queue_free()
+	if is_instance_of(body, amoeba):
+		body.die()
