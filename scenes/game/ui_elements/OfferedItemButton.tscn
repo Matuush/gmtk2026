@@ -1,0 +1,73 @@
+[gd_scene format=3 uid="uid://c6jl5shbyb3xa"]
+
+[ext_resource type="Texture2D" uid="uid://vb68ve5ckd4l" path="res://assets/game/killers/sanitizer_icon.png" id="2_ad2v4"]
+[ext_resource type="Script" uid="uid://be4bymbw1jbgc" path="res://scenes/game/ui_elements/offered_item_button.gd" id="2_bbbor"]
+
+[node name="OfferedItemButton" type="Control" unique_id=1611408139]
+layout_mode = 3
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_right = 128.0
+offset_bottom = 128.0
+grow_horizontal = 2
+grow_vertical = 2
+size_flags_horizontal = 3
+size_flags_vertical = 3
+script = ExtResource("2_bbbor")
+item_selected_color = Color(0, 1, 0, 1)
+
+[node name="ButtonSelectedTheme" type="ColorRect" parent="." unique_id=537524089]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+mouse_filter = 2
+color = Color(0, 0, 0, 1)
+
+[node name="Button" type="Button" parent="." unique_id=2029806423]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+flat = true
+
+[node name="Icon" type="TextureRect" parent="." unique_id=2035736603]
+layout_mode = 1
+anchors_preset = -1
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = 4.0
+offset_top = 4.0
+offset_right = -4.0
+offset_bottom = -4.0
+grow_horizontal = 2
+grow_vertical = 2
+mouse_filter = 2
+texture = ExtResource("2_ad2v4")
+expand_mode = 2
+stretch_mode = 4
+
+[node name="CooldownTimer" type="Timer" parent="." unique_id=611660524]
+one_shot = true
+
+[node name="CooldownBar" type="ColorRect" parent="." unique_id=1669402224]
+layout_mode = 1
+anchors_preset = -1
+anchor_left = 0.219
+anchor_top = 0.969
+anchor_right = 0.406
+anchor_bottom = 1.906
+grow_horizontal = 2
+grow_vertical = 2
+rotation = 3.1415927
+color = Color(0.5411765, 0, 0, 1)
+
+[connection signal="button_down" from="Button" to="." method="_on_button_button_down"]
+[connection signal="timeout" from="CooldownTimer" to="." method="_on_cooldown_timer_timeout"]

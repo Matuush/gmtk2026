@@ -1,6 +1,7 @@
 [gd_scene format=3 uid="uid://c3tj650y80uvk"]
 
 [ext_resource type="Script" uid="uid://ukoobdr4bol4" path="res://scenes/game/organisms/amoeba.gd" id="1_gtxip"]
+[ext_resource type="Texture2D" uid="uid://bbvkb01fmaiib" path="res://assets/game/organisms/bacteria.png" id="2_vdofx"]
 
 [sub_resource type="CapsuleShape2D" id="CapsuleShape2D_oyn23"]
 radius = 5.0
@@ -14,6 +15,7 @@ script = ExtResource("1_gtxip")
 shape = SubResource("CapsuleShape2D_oyn23")
 
 [node name="ColorRect" type="ColorRect" parent="." unique_id=1175198685]
+visible = false
 anchors_preset = 8
 anchor_left = 0.5
 anchor_top = 0.5
@@ -28,5 +30,6 @@ grow_vertical = 2
 color = Color(0, 1, 0.627451, 0.67058825)
 
 [node name="Sprite2D" type="Sprite2D" parent="." unique_id=304902166]
-position = Vector2(-4.7683716e-07, 2.3841858e-07)
-scale = Vector2(0.078125, 0.15624999)
+position = Vector2(-2.3841858e-07, 2.3841858e-07)
+scale = Vector2(0.62499994, 0.625)
+texture = ExtResource("2_vdofx")
