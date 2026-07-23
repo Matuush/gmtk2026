@@ -1,9 +1,26 @@
 [gd_scene format=3 uid="uid://c2n7nkenmprwu"]
 
-[sub_resource type="RectangleShape2D" id="RectangleShape2D_oyn23"]
-size = Vector2(160, 20)
+[ext_resource type="Script" uid="uid://qglfl4cqwpwm" path="res://scenes/game/killers/wall.gd" id="1_lru8c"]
 
 [node name="Wall" type="StaticBody2D" unique_id=96762326]
+script = ExtResource("1_lru8c")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=1851654979]
-shape = SubResource("RectangleShape2D_oyn23")
+
+[node name="PreviewSprite" type="ColorRect" parent="." unique_id=1422414138]
+z_index = 1000
+offset_left = -80.0
+offset_top = -10.0
+offset_right = 80.0
+offset_bottom = 10.0
+mouse_filter = 2
+color = Color(0.7137255, 0, 0, 0.7529412)
+
+[node name="EffectSprite" type="ColorRect" parent="." unique_id=1656661389]
+z_index = 1000
+offset_left = -80.0
+offset_top = -10.0
+offset_right = 80.0
+offset_bottom = 10.0
+mouse_filter = 2
+color = Color(0, 0, 0, 1)

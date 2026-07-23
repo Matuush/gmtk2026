@@ -3,10 +3,13 @@ class_name amoeba extends organism
 func die() -> void:
 	var index = simulation.enemies.find($".")
 	simulation.enemies.remove_at(index)
+	SignalManager.enemy_count_changed.emit()
 	var parent_scene = get_parent()
-	parent_scene.remove_child($".")
+	if parent_scene != null:
+		parent_scene.remove_child($".")
 	queue_free()
 	print("Index: ", index)
+	AudioManager.play_bacteria_death_sound()
 	pass
 	
 func _init() -> void:

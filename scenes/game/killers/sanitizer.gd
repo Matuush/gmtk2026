@@ -20,6 +20,7 @@ func _on_place() -> void:
 	$DurationTimer.start()
 	$AreaEffect/PreviewSprite.visible = false
 	$AreaEffect/EffectSprite.visible = true
+	AudioManager.play_sanitizer_sound()
 	set_collision_shape()
 	
 func _on_hover() -> void:

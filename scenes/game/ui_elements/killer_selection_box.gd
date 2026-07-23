@@ -10,21 +10,13 @@ func make_items():
 func select_button(selected_id : int):
 	if game.selected_item_button != null:
 		game.selected_item_button.deselect_button()
+	if game.hover_over_simulation and game.selected_item_instance != null:
+			game.selected_item_instance._on_stop_hover()
 	for item_button in Boxes:
 		if selected_id == item_button.button_id:
 			game.selected_item_button = item_button
 	game.selected_item_button.select_button()
 	game.selected_item_instance = game.selected_item_button.killer_current_instance
+	if game.hover_over_simulation and game.selected_item_instance != null:
+		game.selected_item_instance._on_hover()
 	SignalManager.item_selected.emit()
-
-func _input(event: InputEvent) -> void:
-	if event.is_action_pressed("select_item_1"):
-		select_button(1)
-	if event.is_action_pressed("select_item_2"):
-		select_button(2)
-	if event.is_action_pressed("select_item_3"):
-		select_button(3)
-	if event.is_action_pressed("select_item_4"):
-		select_button(4)
-	#if event.is_action_pressed("increase_sanitizer_radius"):
-		#sanitizer.sanitizer_size += 1

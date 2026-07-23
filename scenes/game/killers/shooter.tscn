@@ -1,0 +1,36 @@
+[gd_scene format=3 uid="uid://cq3lo7bbyicct"]
+
+[ext_resource type="Script" uid="uid://bhlsnx6xnjh20" path="res://scenes/game/killers/shooter.gd" id="1_6uktl"]
+[ext_resource type="PackedScene" uid="uid://y67pn0h66obu" path="res://scenes/game/killers/shooter_bullet.tscn" id="2_7bk1x"]
+
+[node name="Shooter" type="Node2D" unique_id=2022378077]
+script = ExtResource("1_6uktl")
+bullet_scene = ExtResource("2_7bk1x")
+metadata/_custom_type_script = "uid://cjq87fqmbir20"
+
+[node name="PreviewSprite" type="ColorRect" parent="." unique_id=745845582]
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -32.0
+offset_top = -32.0
+offset_right = 32.0
+offset_bottom = 32.0
+grow_horizontal = 2
+grow_vertical = 2
+mouse_filter = 2
+color = Color(0.7642344, 0.27401945, 0.13515374, 1)
+
+[node name="EffectSprite" type="ColorRect" parent="." unique_id=2015176171]
+offset_left = -32.0
+offset_top = -32.0
+offset_right = 32.0
+offset_bottom = 32.0
+mouse_filter = 2
+color = Color(1, 1, 0.44705883, 1)
+
+[node name="ShootTimer" type="Timer" parent="." unique_id=1254030444]
+
+[connection signal="timeout" from="ShootTimer" to="." method="_on_shoot_timer_timeout"]
