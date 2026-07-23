@@ -3,7 +3,7 @@ class_name simulation extends Node2D
 static var area_size : Vector2 = Vector2(800.0, 480.0)
 static var border_width : float = 32.0
 
-const AMOEBA_LIMIT : int = 6
+const AMOEBA_LIMIT : int = 1000
 
 var my_time : float = 0.0
 static var enemies : Array = []
@@ -40,3 +40,4 @@ func _on_spawn_timer_timeout() -> void:
 		
 		enemies.push_back(new_amoeba)
 		add_child(new_amoeba)
+		SignalManager.enemy_count_changed.emit()
