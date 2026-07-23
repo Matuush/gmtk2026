@@ -1,0 +1,25 @@
+[gd_scene format=3 uid="uid://b6b3v2kin745q"]
+
+[ext_resource type="Script" uid="uid://bb2hrhbjtejnt" path="res://scenes/audio_manager.gd" id="1_8qd8g"]
+[ext_resource type="AudioStream" uid="uid://b6icualymrjnd" path="res://assets/sfx/sanitizer.wav" id="2_liach"]
+[ext_resource type="AudioStream" uid="uid://bw8j6psjj0wc" path="res://assets/sfx/shoot.wav" id="3_3asnw"]
+[ext_resource type="AudioStream" uid="uid://25icb045517x" path="res://assets/sfx/bacteria_death.wav" id="4_m6ggh"]
+[ext_resource type="AudioStream" uid="uid://csn0iiri8jki7" path="res://assets/sfx/wall.wav" id="5_aoitu"]
+
+[node name="AudioManager" type="Node" unique_id=2144007401]
+script = ExtResource("1_8qd8g")
+
+[node name="SanitizerStream" type="AudioStreamPlayer" parent="." unique_id=1194606540]
+stream = ExtResource("2_liach")
+volume_db = -5.0
+
+[node name="ShootStream" type="AudioStreamPlayer" parent="." unique_id=304085140]
+stream = ExtResource("3_3asnw")
+
+[node name="BacteriaStream" type="AudioStreamPlayer" parent="." unique_id=222473804]
+stream = ExtResource("4_m6ggh")
+volume_db = -10.0
+
+[node name="WallStream" type="AudioStreamPlayer" parent="." unique_id=686044196]
+stream = ExtResource("5_aoitu")
+volume_db = -4.0
