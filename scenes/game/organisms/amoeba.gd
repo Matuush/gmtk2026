@@ -10,9 +10,9 @@ func die() -> void:
 	pass
 	
 func _init() -> void:
-	sprite_texture = preload("res://assets/icon.svg")
-	position.x = randf_range(0, window_size.x)
-	position.y = randf_range(0, window_size.y)
+	sprite_texture = preload("res://assets/game/organisms/bacteria.png")
+	#position.x = randf_range(0, window_size.x)
+	#position.y = randf_range(0, window_size.y)
 
 func _process(_delta: float) -> void:
 	window_size = DisplayServer.window_get_size()

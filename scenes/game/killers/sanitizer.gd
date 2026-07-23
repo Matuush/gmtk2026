@@ -1,6 +1,7 @@
 class_name sanitizer extends Area2D
 
-static var sanitizer_size : float = 200.0
+static var sanitizer_size : float = 100.0
+static var cooldown : float = 1.0
 
 func _ready() -> void:
 	$CollisionShape2D.shape.radius = sanitizer_size
