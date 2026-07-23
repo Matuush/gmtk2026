@@ -3,12 +3,22 @@
 [ext_resource type="Script" uid="uid://ukoobdr4bol4" path="res://scenes/game/organisms/amoeba.gd" id="1_gtxip"]
 [ext_resource type="Texture2D" uid="uid://bbvkb01fmaiib" path="res://assets/game/organisms/bacteria.png" id="2_vdofx"]
 
+[sub_resource type="PhysicsMaterial" id="PhysicsMaterial_nse3u"]
+friction = 0.05
+bounce = 0.95
+
 [sub_resource type="CapsuleShape2D" id="CapsuleShape2D_oyn23"]
 radius = 5.0
 height = 20.0
 
 [node name="Amoeba" type="RigidBody2D" unique_id=1900628124]
+physics_material_override = SubResource("PhysicsMaterial_nse3u")
 gravity_scale = 0.0
+inertia = 10.0
+can_sleep = false
+freeze_mode = 1
+continuous_cd = 2
+max_contacts_reported = 10
 script = ExtResource("1_gtxip")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=1755495078]
