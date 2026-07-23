@@ -3,6 +3,10 @@
 [ext_resource type="Script" uid="uid://dul6gpjal1aus" path="res://scenes/game/ui_elements/simulation.gd" id="1_ictt6"]
 [ext_resource type="PackedScene" uid="uid://c3tj650y80uvk" path="res://scenes/game/organisms/amoeba.tscn" id="2_f50vh"]
 
+[sub_resource type="PhysicsMaterial" id="PhysicsMaterial_vdofx"]
+friction = 0.05
+bounce = 0.95
+
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_oyn23"]
 size = Vector2(32, 480)
 
@@ -25,6 +29,7 @@ offset_bottom = 480.0
 color = Color(0.66290987, 0.46607208, 0.47471946, 1)
 
 [node name="Borders" type="StaticBody2D" parent="." unique_id=1126762937]
+physics_material_override = SubResource("PhysicsMaterial_vdofx")
 
 [node name="Left" type="CollisionShape2D" parent="Borders" unique_id=1624267258]
 position = Vector2(16, 240)

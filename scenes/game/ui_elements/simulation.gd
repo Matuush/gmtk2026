@@ -2,8 +2,9 @@ class_name simulation extends Node2D
 
 static var area_size : Vector2 = Vector2(800.0, 480.0)
 static var border_width : float = 32.0
+static var center : Vector2 = Vector2(border_width + area_size.x/2, border_width + area_size.y/2)
 
-const AMOEBA_LIMIT : int = 6
+const AMOEBA_LIMIT : int = 150
 
 var my_time : float = 0.0
 static var enemies : Array = []

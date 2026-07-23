@@ -20,10 +20,8 @@ func _on_event_checker_mouse_entered() -> void:
 	hover_over_simulation = true
 	if selected_item_instance != null:
 		selected_item_instance._on_hover()
-	print("Mouse entered!!!")
 
 func _on_event_checker_mouse_exited() -> void:
 	hover_over_simulation = false
 	if selected_item_instance != null:
 		selected_item_instance._on_stop_hover()
-	print("Mouse exited!!!")
