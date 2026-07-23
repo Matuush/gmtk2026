@@ -1,8 +1,8 @@
 class_name amoeba extends organism
 
 func die() -> void:
-	var index = game.enemies.find($".")
-	game.enemies.remove_at(index)
+	var index = simulation.enemies.find($".")
+	simulation.enemies.remove_at(index)
 	var parent_scene = get_parent()
 	parent_scene.remove_child($".")
 	queue_free()

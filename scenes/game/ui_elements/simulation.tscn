@@ -1,0 +1,50 @@
+[gd_scene format=3 uid="uid://cxfqh24fd71v"]
+
+[ext_resource type="Script" uid="uid://dul6gpjal1aus" path="res://scenes/game/ui_elements/simulation.gd" id="1_ictt6"]
+[ext_resource type="PackedScene" uid="uid://c3tj650y80uvk" path="res://scenes/game/organisms/amoeba.tscn" id="2_f50vh"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_oyn23"]
+size = Vector2(32, 480)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_fxtjd"]
+size = Vector2(736, 32)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_0wu85"]
+size = Vector2(32, 480)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_7m1al"]
+size = Vector2(736, 32)
+
+[node name="Simulation" type="Node2D" unique_id=108406509]
+script = ExtResource("1_ictt6")
+amoeba_scene = ExtResource("2_f50vh")
+
+[node name="Background" type="ColorRect" parent="." unique_id=1090348840]
+offset_right = 800.0
+offset_bottom = 480.0
+color = Color(0.66290987, 0.46607208, 0.47471946, 1)
+
+[node name="Borders" type="StaticBody2D" parent="." unique_id=1126762937]
+
+[node name="Left" type="CollisionShape2D" parent="Borders" unique_id=1624267258]
+position = Vector2(16, 240)
+shape = SubResource("RectangleShape2D_oyn23")
+
+[node name="Up" type="CollisionShape2D" parent="Borders" unique_id=712990757]
+position = Vector2(400, 16)
+shape = SubResource("RectangleShape2D_fxtjd")
+
+[node name="Right" type="CollisionShape2D" parent="Borders" unique_id=1910349576]
+position = Vector2(784, 240)
+shape = SubResource("RectangleShape2D_0wu85")
+
+[node name="Down" type="CollisionShape2D" parent="Borders" unique_id=1907110020]
+position = Vector2(400, 464)
+shape = SubResource("RectangleShape2D_7m1al")
+
+[node name="SpawnTimer" type="Timer" parent="." unique_id=345211012]
+wait_time = 0.1
+autostart = true
+
+[connection signal="gui_input" from="Background" to="." method="_on_background_gui_input"]
+[connection signal="timeout" from="SpawnTimer" to="." method="_on_spawn_timer_timeout"]
