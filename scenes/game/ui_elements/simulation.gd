@@ -10,18 +10,29 @@ static var enemies : Array = []
 static var killers : Array = []
 @export var amoeba_scene : PackedScene
 
-var cursor_on_simulation : bool = false 
-
 func get_random_spawn_location() -> Vector2:
 	return Vector2(
 		randf_range(border_width, area_size.x - border_width),
 		randf_range(border_width, area_size.y - border_width)
 	)
 
-func _physics_process(delta: float) -> void:
-	my_time += delta
-	pass
-				   
+func _process(delta: float) -> void:
+	if game.selected_item_instance == null:
+		return
+	if game.hover_over_simulation:
+		game.selected_item_instance.position = get_local_mouse_position()
+		if Input.is_action_just_pressed("tower_place"):
+			if game.selected_item_button == null:
+				return
+			if not game.selected_item_button.item_ready:
+				return
+			print("Using item")
+			killers.push_back(game.selected_item_instance)
+			game.selected_item_instance._on_place()
+			SignalManager.item_used.emit()
+			game.selected_item_instance = null
+
+   
 func _on_spawn_timer_timeout() -> void:
 	if enemies.size() < AMOEBA_LIMIT:
 		var new_amoeba = amoeba_scene.instantiate()
@@ -29,19 +40,3 @@ func _on_spawn_timer_timeout() -> void:
 		
 		enemies.push_back(new_amoeba)
 		add_child(new_amoeba)
-
-func _on_background_gui_input(event: InputEvent) -> void:	#print("Got gui input")
-	if event.is_action_pressed("tower_place"):
-		if game.selected_item_button == null:
-			return
-		print("Trying to Make item")
-		if not game.selected_item_button.item_ready:
-			return
-		print("Making item")
-		game.selected_item_button.use_item()
-		var killer_scene : PackedScene = killer_enums.scene_dictionary[game.selected_item_button.button_item]
-		var new_killer = killer_scene.instantiate()
-		
-		new_killer.position = get_local_mouse_position()
-		killers.push_back(new_killer)
-		add_child(new_killer)

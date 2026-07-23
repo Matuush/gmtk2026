@@ -1,19 +1,30 @@
 [gd_scene format=3 uid="uid://256s4bbi2557"]
 
 [ext_resource type="Script" uid="uid://blupxb00eehon" path="res://scenes/game/killers/sanitizer.gd" id="1_0q8m4"]
+[ext_resource type="Texture2D" uid="uid://vb68ve5ckd4l" path="res://assets/game/killers/sanitizer_icon.png" id="2_ypdml"]
+[ext_resource type="Texture2D" uid="uid://st7f08ne4gt1" path="res://assets/game/killers/sanitizer_effect.png" id="3_qh23e"]
+[ext_resource type="Texture2D" uid="uid://db7mgnnql12ld" path="res://assets/game/killers/sanitizer_preview.png" id="4_vplsy"]
 
-[sub_resource type="CircleShape2D" id="CircleShape2D_oyn23"]
-radius = 300.0
+[sub_resource type="CircleShape2D" id="CircleShape2D_khl1f"]
 
-[node name="Sanitizer" type="Area2D" unique_id=2146489456]
+[node name="Sanitizer" type="Node2D" unique_id=1498560346]
 script = ExtResource("1_0q8m4")
-
-[node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=1489330483]
-shape = SubResource("CircleShape2D_oyn23")
+icon = ExtResource("2_ypdml")
 
 [node name="DurationTimer" type="Timer" parent="." unique_id=873557453]
 wait_time = 0.5
-autostart = true
+one_shot = true
 
-[connection signal="body_entered" from="." to="." method="_on_body_entered"]
+[node name="AreaEffect" type="Area2D" parent="." unique_id=61914580]
+
+[node name="EffectSprite" type="Sprite2D" parent="AreaEffect" unique_id=670950091]
+texture = ExtResource("3_qh23e")
+
+[node name="PreviewSprite" type="Sprite2D" parent="AreaEffect" unique_id=718191983]
+texture = ExtResource("4_vplsy")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="AreaEffect" unique_id=493729374]
+shape = SubResource("CircleShape2D_khl1f")
+
 [connection signal="timeout" from="DurationTimer" to="." method="_on_duration_timer_timeout"]
+[connection signal="body_entered" from="AreaEffect" to="." method="_on_area_effect_body_entered"]
