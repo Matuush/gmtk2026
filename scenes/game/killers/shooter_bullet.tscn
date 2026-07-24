@@ -6,7 +6,7 @@
 size = Vector2(20, 10)
 
 [node name="Node2D" type="RigidBody2D" unique_id=993352430]
-collision_layer = 7
+collision_layer = 4
 collision_mask = 3
 gravity_scale = 0.0
 contact_monitor = true

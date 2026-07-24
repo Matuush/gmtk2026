@@ -18,6 +18,7 @@ func _on_body_entered(body: Node) -> void:
 		print("Bullet")
 	else:
 		print("Secret 3rd thing")
+	leave_scene()
 
 
 func _on_despawn_timer_timeout() -> void:
