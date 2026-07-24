@@ -10,7 +10,7 @@ script = ExtResource("1_0sr1o")
 [node name="BackGround" type="ColorRect" parent="." unique_id=1391499599]
 offset_right = 1280.0
 offset_bottom = 720.0
-color = Color(0.7532877, 0.91385627, 0.97304934, 1)
+color = Color(0.48597902, 0.7441823, 0.44131368, 1)
 
 [node name="EnemyCountLabel" type="Label" parent="." unique_id=1590296513]
 offset_left = 151.0
@@ -22,19 +22,22 @@ theme_override_font_sizes/font_size = 40
 text = "Enemies Alive: xx"
 
 [node name="Simulation" parent="." unique_id=108406509 instance=ExtResource("4_5i0tg")]
-position = Vector2(45, 189)
+position = Vector2(13, 109)
 
 [node name="EventChecker" type="Control" parent="Simulation" unique_id=1060536306]
 layout_mode = 3
 anchors_preset = 0
-offset_right = 800.0
-offset_bottom = 480.0
+offset_left = -6.0
+offset_top = 23.0
+offset_right = 794.0
+offset_bottom = 503.0
+metadata/_edit_use_anchors_ = true
 
 [node name="KillerSelectionBox" parent="." unique_id=1654676121 instance=ExtResource("4_lfrn8")]
-offset_left = 1080.0
-offset_top = 40.0
-offset_right = 1240.0
-offset_bottom = 680.0
+offset_left = 890.0
+offset_top = 106.0
+offset_right = 1271.64
+offset_bottom = 711.0
 alignment = 0
 
 [connection signal="mouse_entered" from="Simulation/EventChecker" to="." method="_on_event_checker_mouse_entered"]
