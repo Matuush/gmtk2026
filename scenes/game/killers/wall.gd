@@ -44,3 +44,19 @@ func _ready() -> void:
 	placed = false
 	$PreviewSprite.visible = false
 	$EffectSprite.visible = false
+
+
+func on_upgrade_one() -> void:
+	return 
+
+func on_upgrade_two() -> void:
+	return 
+
+func get_upgrade_one_description(phase : int) -> String:
+	return "Upgrade one description\ncost: 10"
+
+func get_upgrade_two_description(phase : int) -> String:
+	return "Upgrade two description\ncost: 10"
+
+func get_item_cost(phase : int) -> int:
+	return 10

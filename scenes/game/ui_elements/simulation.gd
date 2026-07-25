@@ -23,9 +23,9 @@ func _process(delta: float) -> void:
 	if game.hover_over_simulation:
 		game.selected_item_instance.position = get_local_mouse_position()
 		if Input.is_action_just_pressed("tower_place"):
-			if game.selected_item_button == null:
+			if game.selected_offered_killer == null:
 				return
-			if not game.selected_item_button.item_ready:
+			if not game.selected_offered_killer.item_ready:
 				return
 			print("Using item")
 			killers.push_back(game.selected_item_instance)

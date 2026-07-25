@@ -1,7 +1,9 @@
 [gd_scene format=3 uid="uid://256s4bbi2557"]
 
 [ext_resource type="Script" uid="uid://blupxb00eehon" path="res://scenes/game/killers/sanitizer.gd" id="1_0q8m4"]
+[ext_resource type="Texture2D" uid="uid://dx62rm5ouogar" path="res://assets/game/ui/wider_icon.png" id="2_q141e"]
 [ext_resource type="Texture2D" uid="uid://vb68ve5ckd4l" path="res://assets/game/killers/sanitizer_icon.png" id="2_ypdml"]
+[ext_resource type="Texture2D" uid="uid://bjkknsx071q6" path="res://assets/game/ui/faster_icon.png" id="3_l04lg"]
 [ext_resource type="Texture2D" uid="uid://st7f08ne4gt1" path="res://assets/game/killers/sanitizer_effect.png" id="3_qh23e"]
 [ext_resource type="Texture2D" uid="uid://db7mgnnql12ld" path="res://assets/game/killers/sanitizer_preview.png" id="4_vplsy"]
 
@@ -10,6 +12,8 @@
 [node name="Sanitizer" type="Node2D" unique_id=1498560346]
 script = ExtResource("1_0q8m4")
 icon = ExtResource("2_ypdml")
+upgrade_texture_one = ExtResource("2_q141e")
+upgrade_texture_two = ExtResource("3_l04lg")
 
 [node name="DurationTimer" type="Timer" parent="." unique_id=873557453]
 wait_time = 0.5

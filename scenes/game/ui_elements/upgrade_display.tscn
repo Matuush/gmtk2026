@@ -1,0 +1,49 @@
+[gd_scene format=3 uid="uid://p47lpuxt1ryt"]
+
+[ext_resource type="Texture2D" uid="uid://dx62rm5ouogar" path="res://assets/game/ui/wider_icon.png" id="1_g8t1w"]
+[ext_resource type="Texture2D" uid="uid://dlodocp1my6di" path="res://assets/game/ui/empty_orb.png" id="1_smflu"]
+[ext_resource type="Script" uid="uid://ctio14xmq4nhv" path="res://scenes/game/ui_elements/upgrade_display.gd" id="1_ynsfe"]
+
+[node name="UpgradeDisplay" type="HBoxContainer" unique_id=960250906]
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_right = -986.0
+offset_bottom = -631.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("1_ynsfe")
+upgrade_icon = ExtResource("1_g8t1w")
+
+[node name="BuyButton" type="Button" parent="." unique_id=81964244]
+layout_mode = 2
+size_flags_horizontal = 3
+
+[node name="UpgradeIcon" type="TextureRect" parent="BuyButton" unique_id=720776908]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+mouse_filter = 2
+expand_mode = 2
+
+[node name="BuyIndicator1" type="TextureRect" parent="." unique_id=911148166]
+layout_mode = 2
+size_flags_horizontal = 3
+texture = ExtResource("1_smflu")
+
+[node name="BuyIndicator2" type="TextureRect" parent="." unique_id=1689091820]
+layout_mode = 2
+size_flags_horizontal = 3
+texture = ExtResource("1_smflu")
+
+[node name="BuyIndicator3" type="TextureRect" parent="." unique_id=46165841]
+layout_mode = 2
+size_flags_horizontal = 3
+texture = ExtResource("1_smflu")
+
+[connection signal="button_down" from="BuyButton" to="." method="_on_buy_button_button_down"]
+[connection signal="mouse_entered" from="BuyButton" to="." method="_on_buy_button_mouse_entered"]
+[connection signal="mouse_exited" from="BuyButton" to="." method="_on_buy_button_mouse_exited"]

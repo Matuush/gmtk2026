@@ -1,0 +1,90 @@
+[gd_scene format=3 uid="uid://c6jl5shbyb3xa"]
+
+[ext_resource type="Script" uid="uid://be4bymbw1jbgc" path="res://scenes/game/ui_elements/offered_killer.gd" id="1_278or"]
+[ext_resource type="PackedScene" uid="uid://p47lpuxt1ryt" path="res://scenes/game/ui_elements/upgrade_display.tscn" id="2_278or"]
+[ext_resource type="Texture2D" uid="uid://vb68ve5ckd4l" path="res://assets/game/killers/sanitizer_icon.png" id="2_gwluv"]
+
+[node name="OfferedKiller" type="HBoxContainer" unique_id=347043476 node_paths=PackedStringArray("item_selected_indicator", "cooldown_bar", "offered_item_icon", "upgrade_displays")]
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_right = 255.0
+offset_bottom = 178.0
+grow_horizontal = 2
+grow_vertical = 2
+size_flags_horizontal = 3
+size_flags_vertical = 3
+script = ExtResource("1_278or")
+item_selected_color = Color(0, 1, 0, 1)
+item_not_selected_color = Color(0.29954746, 0.29954746, 0.29954743, 1)
+item_selected_indicator = NodePath("ItemUseButton/ButtonSelectedTheme")
+cooldown_bar = NodePath("ItemUseButton/CooldownBar")
+offered_item_icon = NodePath("ItemUseButton/Icon")
+upgrade_displays = [NodePath("VBoxContainer/UpgradeDisplay1"), NodePath("VBoxContainer/UpgradeDisplay2")]
+
+[node name="CooldownTimer" type="Timer" parent="." unique_id=611660524]
+one_shot = true
+
+[node name="ItemUseButton" type="Button" parent="." unique_id=579156729]
+layout_mode = 2
+size_flags_horizontal = 3
+
+[node name="ButtonSelectedTheme" type="ColorRect" parent="ItemUseButton" unique_id=537524089]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+mouse_filter = 2
+color = Color(0, 0, 0, 1)
+
+[node name="Icon" type="TextureRect" parent="ItemUseButton" unique_id=2035736603]
+layout_mode = 1
+anchors_preset = -1
+anchor_left = 0.03
+anchor_top = 0.03
+anchor_right = 0.94
+anchor_bottom = 0.94
+grow_horizontal = 2
+grow_vertical = 2
+mouse_filter = 2
+texture = ExtResource("2_gwluv")
+
+[node name="CooldownBar" type="ColorRect" parent="ItemUseButton" unique_id=1669402224]
+layout_mode = 1
+anchors_preset = -1
+anchor_left = 0.03
+anchor_top = 0.03
+anchor_right = 0.94
+anchor_bottom = 0.94
+offset_bottom = -1.5258789e-05
+grow_vertical = 2
+mouse_filter = 2
+color = Color(0, 0, 0.011764706, 0.7294118)
+
+[node name="VBoxContainer" type="VBoxContainer" parent="." unique_id=1048954024]
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_stretch_ratio = 2.0
+
+[node name="UpgradeDisplay1" parent="VBoxContainer" unique_id=960250906 instance=ExtResource("2_278or")]
+layout_mode = 2
+size_flags_vertical = 3
+
+[node name="UpgradeDisplay2" parent="VBoxContainer" unique_id=1556676575 instance=ExtResource("2_278or")]
+layout_mode = 2
+size_flags_vertical = 3
+
+[connection signal="timeout" from="CooldownTimer" to="." method="_on_cooldown_timer_timeout"]
+[connection signal="button_down" from="ItemUseButton" to="." method="_on_item_use_button_button_down"]
+[connection signal="mouse_entered" from="ItemUseButton" to="." method="_on_item_use_button_mouse_entered"]
+[connection signal="mouse_exited" from="ItemUseButton" to="." method="_on_anything_stop_hover"]
+[connection signal="upgrade_button_hover" from="VBoxContainer/UpgradeDisplay1" to="." method="_on_upgrade_display_1_upgrade_button_hover"]
+[connection signal="upgrade_button_press" from="VBoxContainer/UpgradeDisplay1" to="." method="_on_upgrade_display_1_upgrade_button_press"]
+[connection signal="upgrade_button_stop_hover" from="VBoxContainer/UpgradeDisplay1" to="." method="_on_anything_stop_hover"]
+[connection signal="upgrade_button_hover" from="VBoxContainer/UpgradeDisplay2" to="." method="_on_upgrade_display_2_upgrade_button_hover"]
+[connection signal="upgrade_button_press" from="VBoxContainer/UpgradeDisplay2" to="." method="_on_upgrade_display_2_upgrade_button_press"]
+[connection signal="upgrade_button_stop_hover" from="VBoxContainer/UpgradeDisplay2" to="." method="_on_anything_stop_hover"]

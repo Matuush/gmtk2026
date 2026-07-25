@@ -1,9 +1,12 @@
 [gd_scene format=3 uid="uid://cqnqhvs2fuek1"]
 
 [ext_resource type="Script" uid="uid://b5yp62djd4obh" path="res://scenes/game/ui_elements/killer_selection_box.gd" id="1_arr8p"]
-[ext_resource type="PackedScene" uid="uid://c6jl5shbyb3xa" path="res://scenes/game/ui_elements/OfferedItemButton.tscn" id="1_jn3au"]
+[ext_resource type="PackedScene" uid="uid://c6jl5shbyb3xa" path="res://scenes/game/ui_elements/OfferedKiller.tscn" id="1_jn3au"]
 
-[node name="KillerSelectionBox" type="VBoxContainer" unique_id=1654676121]
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_0sr1o"]
+bg_color = Color(0.36329663, 0.20258641, 0.16474769, 1)
+
+[node name="KillerSelectionBox" type="VBoxContainer" unique_id=1654676121 node_paths=PackedStringArray("Boxes")]
 anchors_preset = 15
 anchor_right = 1.0
 anchor_bottom = 1.0
@@ -16,6 +19,26 @@ size_flags_vertical = 3
 theme_override_constants/separation = 8
 alignment = 1
 script = ExtResource("1_arr8p")
+Boxes = [NodePath("OfferedItem1"), NodePath("OfferedItem2"), NodePath("OfferedItem3"), NodePath("OfferedItem4")]
+
+[node name="InfoDisplay" type="RichTextLabel" parent="." unique_id=1548491960]
+layout_mode = 2
+size_flags_vertical = 3
+size_flags_stretch_ratio = 0.5
+theme_override_constants/line_separation = 8
+theme_override_styles/normal = SubResource("StyleBoxFlat_0sr1o")
+bbcode_enabled = true
+text = "hello
+hello"
+
+[node name="ColorRect" type="ColorRect" parent="InfoDisplay" unique_id=883594032]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+color = Color(1, 1, 1, 0)
 
 [node name="OfferedItem1" parent="." unique_id=1611408139 instance=ExtResource("1_jn3au")]
 layout_mode = 2

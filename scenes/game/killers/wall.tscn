@@ -1,9 +1,15 @@
 [gd_scene format=3 uid="uid://c2n7nkenmprwu"]
 
 [ext_resource type="Script" uid="uid://qglfl4cqwpwm" path="res://scenes/game/killers/wall.gd" id="1_lru8c"]
+[ext_resource type="Texture2D" uid="uid://do8q652ecybrp" path="res://assets/game/killers/wall_icon.png" id="2_2rtcs"]
+[ext_resource type="Texture2D" uid="uid://dx62rm5ouogar" path="res://assets/game/ui/wider_icon.png" id="2_qn4xf"]
+[ext_resource type="Texture2D" uid="uid://bcjj67jmnksoo" path="res://assets/game/ui/full_orb.png" id="3_ilqgj"]
 
 [node name="Wall" type="StaticBody2D" unique_id=96762326]
 script = ExtResource("1_lru8c")
+icon = ExtResource("2_2rtcs")
+upgrade_texture_one = ExtResource("2_qn4xf")
+upgrade_texture_two = ExtResource("3_ilqgj")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=1851654979]
 

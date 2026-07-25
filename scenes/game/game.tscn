@@ -4,8 +4,9 @@
 [ext_resource type="PackedScene" uid="uid://cxfqh24fd71v" path="res://scenes/game/ui_elements/simulation.tscn" id="4_5i0tg"]
 [ext_resource type="PackedScene" uid="uid://cqnqhvs2fuek1" path="res://scenes/game/ui_elements/killer_selection_box.tscn" id="4_lfrn8"]
 
-[node name="Game" type="Node2D" unique_id=683943009]
+[node name="Game" type="Node2D" unique_id=683943009 node_paths=PackedStringArray("killer_box")]
 script = ExtResource("1_0sr1o")
+killer_box = NodePath("KillerSelectionBox")
 
 [node name="BackGround" type="ColorRect" parent="." unique_id=1391499599]
 offset_right = 1280.0
