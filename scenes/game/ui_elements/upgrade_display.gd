@@ -4,7 +4,7 @@ static var empty_indicator_texture : Texture2D = preload("res://assets/game/ui/e
 static var full_indicator_texture : Texture2D = preload("res://assets/game/ui/full_orb.png")
 
 @export var upgrade_icon : Texture2D
-static var maxxed_icon : Texture2D = preload("res://assets/icon.svg")
+static var maxxed_icon : Texture2D = preload("res://assets/game/killers/bought_icon.png")
 
 var indicators : Array[TextureRect]
 signal upgrade_button_press
