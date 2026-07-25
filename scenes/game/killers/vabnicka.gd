@@ -21,7 +21,7 @@ func _on_place() -> void:
 	$PreviewSprite.visible = false
 	$EffectSprite.visible = true
 	AudioManager.play_vabnicka_sound() # TODO
-	get_parent().vabnicky.push_back($".")
+	simulation.vabnicky.push_back($".")
 
 func sladke_vabeni(delta : float) -> void:
 	for enemy in simulation.enemies:

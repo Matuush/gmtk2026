@@ -25,6 +25,7 @@ func indicate_upgrade(indicator_id : int):
 
 func indicate_looksmaxxing():
 	$BuyButton/UpgradeIcon.texture = maxxed_icon
+	$BuyButton.disabled = true
 	is_maxxed = true
 	_on_buy_button_mouse_entered()
 
