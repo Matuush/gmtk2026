@@ -33,7 +33,6 @@ func _process(delta: float) -> void:
 				return
 			if not game.selected_offered_killer.item_ready:
 				return
-			print("Using item")
 			killers.push_back(game.selected_item_instance)
 			game.selected_item_instance._on_place()
 			SignalManager.item_used.emit()

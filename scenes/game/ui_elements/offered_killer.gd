@@ -42,7 +42,6 @@ func set_item(new_item : killer_enums.names):
 	cooldown_bar.visible = false
 	item_ready = true
 	$CooldownTimer.wait_time = killer_enums.cooldown_dictionary[new_item]
-	print("Set timeout to: ", $CooldownTimer.wait_time)
 	var _s = "" % []
 
 func select_button():
@@ -81,10 +80,8 @@ func _on_upgrade_display_2_upgrade_button_press() -> void:
 func try_buy_upgrade(upgrade_id : int) -> void:
 	var upgrade_index = upgrade_progresses[upgrade_id]
 	if upgrade_index >= max_upgrades:
-		print("Already bought all upgrades")
 		return
 	if false:
-		print("Not enough money")
 		return
 	upgrade_progresses[upgrade_id] += 1
 	#TODO cost
@@ -113,7 +110,6 @@ func _on_upgrade_display_1_upgrade_button_hover() -> void:
 
 
 func _on_upgrade_display_2_upgrade_button_hover() -> void:
-	print("Hovering")
 	var to_display : String
 	if upgrade_progresses[1] == max_upgrades:
 		to_display = "Already max level"
@@ -123,7 +119,6 @@ func _on_upgrade_display_2_upgrade_button_hover() -> void:
 
 
 func _on_anything_stop_hover() -> void:
-	print("sto pHovering")
 	SignalManager.purchase_text.emit("epic support text")
 	
 func is_item_ready() -> bool:

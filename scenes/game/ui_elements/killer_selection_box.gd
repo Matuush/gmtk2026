@@ -28,5 +28,4 @@ func select_button(selected_id : int):
 	SignalManager.item_selected.emit()
 
 func display_text(new_text : String):
-	print("Displaying: ", new_text)
 	$InfoDisplay.text = new_text

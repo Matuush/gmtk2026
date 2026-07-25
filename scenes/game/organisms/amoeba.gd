@@ -16,7 +16,6 @@ func die() -> void:
 	if parent_scene != null:
 		parent_scene.remove_child($".")
 	queue_free()
-	print("Index: ", index)
 	AudioManager.play_bacteria_death_sound()
 	pass
 	
