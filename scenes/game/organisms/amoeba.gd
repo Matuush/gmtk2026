@@ -4,9 +4,10 @@ var mate = null
 
 enum amoeba_state {pairing, waiting}
 var state : amoeba_state
-var WAITING_TIME : float = 2
-var BIRTH_TIME : float = 1
-var PAIRING_DISTANCE : float = 30
+const WAITING_TIME : float = 2
+const BIRTH_TIME : float = 1
+const PAIRING_DISTANCE : float = 30
+const DIE_REWARD : int = 1
 
 func die() -> void:
 	var index = simulation.enemies.find($".")
@@ -18,7 +19,7 @@ func die() -> void:
 	queue_free()
 	print("Index: ", index)
 	AudioManager.play_bacteria_death_sound()
-	pass
+	SignalManager.add_money.emit(DIE_REWARD)
 	
 func _init() -> void:
 	sprite_texture = preload("res://assets/game/organisms/bacteria.png")

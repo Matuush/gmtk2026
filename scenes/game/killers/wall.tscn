@@ -10,6 +10,9 @@ script = ExtResource("1_lru8c")
 icon = ExtResource("2_2rtcs")
 upgrade_texture_one = ExtResource("2_qn4xf")
 upgrade_texture_two = ExtResource("3_ilqgj")
+cost = 10
+upgrade_one_costs = Array[int]([15, 30, 45])
+upgrade_two_costs = Array[int]([12, 13, 14])
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=1851654979]
 

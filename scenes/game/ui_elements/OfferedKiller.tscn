@@ -18,10 +18,10 @@ size_flags_horizontal = 3
 size_flags_vertical = 3
 script = ExtResource("1_278or")
 item_selected_color = Color(0, 1, 0, 1)
-item_not_selected_color = Color(0.29954746, 0.29954746, 0.29954743, 1)
+item_not_selected_color = Color(0.24840015, 0.24840018, 0.24840012, 1)
 item_selected_indicator = NodePath("ItemUseButton/ButtonSelectedTheme")
-cooldown_bar = NodePath("ItemUseButton/CooldownBar")
-offered_item_icon = NodePath("ItemUseButton/Icon")
+cooldown_bar = NodePath("ItemUseButton/Control/CooldownBar")
+offered_item_icon = NodePath("ItemUseButton/Control/Icon")
 upgrade_displays = [NodePath("VBoxContainer/UpgradeDisplay1"), NodePath("VBoxContainer/UpgradeDisplay2")]
 
 [node name="CooldownTimer" type="Timer" parent="." unique_id=611660524]
@@ -41,26 +41,42 @@ grow_vertical = 2
 mouse_filter = 2
 color = Color(0, 0, 0, 1)
 
-[node name="Icon" type="TextureRect" parent="ItemUseButton" unique_id=2035736603]
+[node name="Control" type="Control" parent="ItemUseButton" unique_id=199819693]
 layout_mode = 1
-anchors_preset = -1
-anchor_left = 0.03
-anchor_top = 0.03
-anchor_right = 0.94
-anchor_bottom = 0.94
+anchor_left = 0.05
+anchor_top = 0.05
+anchor_right = 0.95
+anchor_bottom = 0.95
+grow_horizontal = 2
+grow_vertical = 2
+mouse_filter = 2
+
+[node name="IconBackground" type="ColorRect" parent="ItemUseButton/Control" unique_id=1628402105]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+mouse_filter = 2
+color = Color(0.4117647, 0.4117647, 0.4117647, 1)
+
+[node name="Icon" type="TextureRect" parent="ItemUseButton/Control" unique_id=2035736603]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
 mouse_filter = 2
 texture = ExtResource("2_gwluv")
 
-[node name="CooldownBar" type="ColorRect" parent="ItemUseButton" unique_id=1669402224]
+[node name="CooldownBar" type="ColorRect" parent="ItemUseButton/Control" unique_id=1669402224]
 layout_mode = 1
-anchors_preset = -1
-anchor_left = 0.03
-anchor_top = 0.03
-anchor_right = 0.94
-anchor_bottom = 0.94
-offset_bottom = -1.5258789e-05
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
 grow_vertical = 2
 mouse_filter = 2
 color = Color(0, 0, 0.011764706, 0.7294118)

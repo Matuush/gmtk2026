@@ -26,13 +26,17 @@ func _process(delta: float) -> void:
 	if game.selected_item_instance == null:
 		return
 	if game.hover_over_simulation:
-		game.selected_item_instance.position = get_local_mouse_position()
+		game.selected_item_instance.global_position = get_global_mouse_position()
 		if Input.is_action_just_pressed("tower_place"):
 			if game.selected_offered_killer == null:
 				return
 			if not game.selected_offered_killer.item_ready:
 				return
+			if game.selected_item_instance.cost > game.money:
+				SignalManager.error_message.emit("Error: Not enough money!")
+				return
 			print("Using item")
+			SignalManager.add_money.emit(- game.selected_item_instance.cost)
 			killers.push_back(game.selected_item_instance)
 			game.selected_item_instance._on_place()
 			SignalManager.item_used.emit()

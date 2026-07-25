@@ -24,8 +24,8 @@ script = ExtResource("1_ictt6")
 amoeba_scene = ExtResource("2_f50vh")
 
 [node name="Background" type="ColorRect" parent="." unique_id=1090348840]
-offset_right = 848.0
-offset_bottom = 628.0
+offset_right = 799.0
+offset_bottom = 478.0
 color = Color(0.66290987, 0.46607208, 0.47471946, 1)
 
 [node name="Borders" type="StaticBody2D" parent="." unique_id=1126762937]

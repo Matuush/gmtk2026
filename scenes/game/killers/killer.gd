@@ -6,6 +6,10 @@ var is_hovering : bool
 @export var upgrade_texture_one : Texture2D 
 @export var upgrade_texture_two : Texture2D 
 
+@export var cost : int
+@export var upgrade_one_costs : Array[int]
+@export var upgrade_two_costs : Array[int]
+
 @abstract func _on_place() -> void
 
 @abstract func _on_hover() -> void
@@ -19,6 +23,3 @@ var is_hovering : bool
 @abstract func get_upgrade_one_description(phase : int) -> String
 
 @abstract func get_upgrade_two_description(phase : int) -> String
-
-@abstract func get_item_cost(phase : int) -> int
- 

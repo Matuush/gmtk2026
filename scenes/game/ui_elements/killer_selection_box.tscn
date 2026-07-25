@@ -4,6 +4,10 @@
 [ext_resource type="PackedScene" uid="uid://c6jl5shbyb3xa" path="res://scenes/game/ui_elements/OfferedKiller.tscn" id="1_jn3au"]
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_0sr1o"]
+content_margin_left = 4.0
+content_margin_top = 4.0
+content_margin_right = 4.0
+content_margin_bottom = 4.0
 bg_color = Color(0.36329663, 0.20258641, 0.16474769, 1)
 
 [node name="KillerSelectionBox" type="VBoxContainer" unique_id=1654676121 node_paths=PackedStringArray("Boxes")]
@@ -24,21 +28,15 @@ Boxes = [NodePath("OfferedItem1"), NodePath("OfferedItem2"), NodePath("OfferedIt
 [node name="InfoDisplay" type="RichTextLabel" parent="." unique_id=1548491960]
 layout_mode = 2
 size_flags_vertical = 3
-size_flags_stretch_ratio = 0.5
-theme_override_constants/line_separation = 8
+size_flags_stretch_ratio = 0.75
+theme_override_constants/line_separation = 6
+theme_override_font_sizes/normal_font_size = 15
 theme_override_styles/normal = SubResource("StyleBoxFlat_0sr1o")
 bbcode_enabled = true
 text = "hello
+hello
 hello"
-
-[node name="ColorRect" type="ColorRect" parent="InfoDisplay" unique_id=883594032]
-layout_mode = 1
-anchors_preset = 15
-anchor_right = 1.0
-anchor_bottom = 1.0
-grow_horizontal = 2
-grow_vertical = 2
-color = Color(1, 1, 1, 0)
+scroll_active = false
 
 [node name="OfferedItem1" parent="." unique_id=1611408139 instance=ExtResource("1_jn3au")]
 layout_mode = 2

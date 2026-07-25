@@ -9,23 +9,28 @@
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_khl1f"]
 
-[node name="Sanitizer" type="Node2D" unique_id=1498560346]
+[node name="Sanitizer" type="Node2D" unique_id=1498560346 node_paths=PackedStringArray("effect_sprite", "preview_sprite")]
 script = ExtResource("1_0q8m4")
+effect_sprite = NodePath("EffectSprite")
+preview_sprite = NodePath("PreviewSprite")
 icon = ExtResource("2_ypdml")
 upgrade_texture_one = ExtResource("2_q141e")
 upgrade_texture_two = ExtResource("3_l04lg")
+cost = 5
+upgrade_one_costs = Array[int]([20, 35, 50])
+upgrade_two_costs = Array[int]([30, 30, 30])
 
 [node name="DurationTimer" type="Timer" parent="." unique_id=873557453]
 wait_time = 0.5
 one_shot = true
 
-[node name="AreaEffect" type="Area2D" parent="." unique_id=61914580]
-
-[node name="EffectSprite" type="Sprite2D" parent="AreaEffect" unique_id=670950091]
+[node name="EffectSprite" type="Sprite2D" parent="." unique_id=670950091]
 texture = ExtResource("3_qh23e")
 
-[node name="PreviewSprite" type="Sprite2D" parent="AreaEffect" unique_id=718191983]
+[node name="PreviewSprite" type="Sprite2D" parent="." unique_id=718191983]
 texture = ExtResource("4_vplsy")
+
+[node name="AreaEffect" type="Area2D" parent="." unique_id=61914580]
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="AreaEffect" unique_id=493729374]
 shape = SubResource("CircleShape2D_khl1f")

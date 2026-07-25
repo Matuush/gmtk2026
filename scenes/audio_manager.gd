@@ -3,7 +3,7 @@ extends Node
 func play_sanitizer_sound() -> void:
 	$SanitizerStream.play()
 	
-func play_wall_sound() -> void:
+func play_industrial_build_sound() -> void:
 	$WallStream.play()
 
 func play_shoot_sound() -> void:

@@ -30,6 +30,7 @@ func indicate_looksmaxxing():
 
 func _on_buy_button_button_down() -> void:
 	upgrade_button_press.emit()
+	_on_buy_button_mouse_entered()
 
 func _on_buy_button_mouse_entered() -> void:
 	upgrade_button_hover.emit()

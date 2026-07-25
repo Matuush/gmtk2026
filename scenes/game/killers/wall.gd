@@ -27,7 +27,7 @@ func _on_place() -> void:
 	placed = true
 	$PreviewSprite.visible = false
 	$EffectSprite.visible = true
-	AudioManager.play_wall_sound()
+	AudioManager.play_industrial_build_sound()
 	hovering = false
 	set_collision_shape()
 	
@@ -45,7 +45,6 @@ func _ready() -> void:
 	$PreviewSprite.visible = false
 	$EffectSprite.visible = false
 
-
 func on_upgrade_one() -> void:
 	return 
 
@@ -57,6 +56,3 @@ func get_upgrade_one_description(phase : int) -> String:
 
 func get_upgrade_two_description(phase : int) -> String:
 	return "Upgrade two description\ncost: 10"
-
-func get_item_cost(phase : int) -> int:
-	return 10
