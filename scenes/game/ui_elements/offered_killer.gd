@@ -42,8 +42,6 @@ func set_item(new_item : killer_enums.names):
 	cooldown_bar.visible = false
 	item_ready = true
 	$CooldownTimer.wait_time = killer_enums.cooldown_dictionary[new_item]
-	print("Set timeout to: ", $CooldownTimer.wait_time)
-	var _s = "" % []
 
 func select_button():
 	item_selected_indicator.color = item_selected_color
@@ -81,7 +79,6 @@ func _on_upgrade_display_2_upgrade_button_press() -> void:
 func try_buy_upgrade(upgrade_id : int) -> void:
 	var upgrade_index = upgrade_progresses[upgrade_id]
 	if upgrade_index >= max_upgrades:
-		print("Already bought all upgrades")
 		return
 	var upgrade_price : int
 	if upgrade_id == 0:
@@ -90,7 +87,7 @@ func try_buy_upgrade(upgrade_id : int) -> void:
 		upgrade_price = killer_current_instance.upgrade_two_costs[upgrade_index]
 		
 	if upgrade_price > game.money:
-		SignalManager.error_message.emit("Error: Not enough money!")
+		SignalManager.error_message.emit(game.error_no_money)
 		return
 	SignalManager.add_money.emit(-upgrade_price)
 	upgrade_progresses[upgrade_id] += 1
@@ -101,36 +98,31 @@ func try_buy_upgrade(upgrade_id : int) -> void:
 	if upgrade_progresses[upgrade_id] == max_upgrades:
 		upgrade_displays[upgrade_id].indicate_looksmaxxing()
 	upgrade_displays[upgrade_id].indicate_upgrade(upgrade_index)
-	print("Bought")
-
 
 func _on_item_use_button_mouse_entered() -> void:
 	var desc : String = killer_enums.description_dictionary[killer_enum_name] + "\nCost: %d" % killer_current_instance.cost
 	SignalManager.purchase_text.emit(desc)
 
 func _on_upgrade_display_1_upgrade_button_hover() -> void:
-	print("Hovering")
 	var to_display : String
 	if upgrade_progresses[0] == max_upgrades:
-		to_display = "Already max level"
+		to_display = "Upgrade is already at max level"
 	else:
 		to_display = killer_current_instance.get_upgrade_one_description(upgrade_progresses[0])
 	SignalManager.purchase_text.emit(to_display)
 
 
 func _on_upgrade_display_2_upgrade_button_hover() -> void:
-	print("Hovering")
 	var to_display : String
 	if upgrade_progresses[1] == max_upgrades:
-		to_display = "Already max level"
+		to_display = "Upgrade is already at max level"
 	else:
 		to_display = killer_current_instance.get_upgrade_two_description(upgrade_progresses[1])
 	SignalManager.purchase_text.emit(to_display)
 
 
 func _on_anything_stop_hover() -> void:
-	print("sto pHovering")
-	SignalManager.purchase_text.emit("epic support text")
+	SignalManager.purchase_text.emit("")
 	
 func is_item_ready() -> bool:
 	print($ItemUseButton/CooldownBar.scale.y)

@@ -8,16 +8,13 @@ func leave_scene() -> void:
 
 func _on_body_entered(body: Node) -> void:
 	print("Detected collision with!")
-	if is_instance_of(body, killer):
-		print("Killer, returnigng")
+	
+	if is_instance_of(body, killer) and not is_instance_of(body, wall):
+		print("Some killer other than wall, returning")
 		return
 	elif is_instance_of(body, organism):
 		print("organism, returnigng")
 		body.die()
-	elif is_instance_of(body, shooter_bullet ):
-		print("Bullet")
-	else:
-		print("Secret 3rd thing")
 	leave_scene()
 
 

@@ -36,7 +36,7 @@ func _init() -> void:
 func _ready() -> void:
 	do_after_time(WAITING_TIME, get_horny)
 
-func do_after_time(time: float, fn) -> void:
+func do_after_time(time: float, fn : Callable) -> void:
 	var timer = Timer.new()
 	timer.wait_time = time
 	timer.one_shot = true

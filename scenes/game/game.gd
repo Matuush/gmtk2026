@@ -9,7 +9,7 @@ static var selected_item_instance = null
 static var hover_over_simulation : bool = false
 
 const STARTING_CASH = 20
-static var money : int = 0
+static var money : int = 5000
 
 @export var killer_box : killer_selection_box
 
@@ -58,6 +58,7 @@ func _on_error_message(message : String):
 	$HUDBox/ErrorMessageLabel.text = message
 	$ErrorMessageTimer.start()
 
+const error_no_money : String = "Not enough money!"
 
 func _on_error_message_timer_timeout() -> void:
 	$HUDBox/ErrorMessageLabel.visible = false
