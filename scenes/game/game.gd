@@ -17,13 +17,13 @@ func _ready():
 
 func _process(_delta : float) -> void:
 	if Input.is_action_just_pressed("select_item_1"):
-		$KillerSelectionBox.select_button(1)
+		$KillerSelectionBox.select_button(0)
 	if Input.is_action_just_pressed("select_item_2"):
-		$KillerSelectionBox.select_button(2)
+		$KillerSelectionBox.select_button(1)
 	if Input.is_action_just_pressed("select_item_3"):
-		$KillerSelectionBox.select_button(3)
+		$KillerSelectionBox.select_button(2)
 	if Input.is_action_just_pressed("select_item_4"):
-		$KillerSelectionBox.select_button(4)
+		$KillerSelectionBox.select_button(3)
 
 func _on_item_selected():
 	print("Selected new item")

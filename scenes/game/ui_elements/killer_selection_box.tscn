@@ -42,16 +42,15 @@ color = Color(1, 1, 1, 0)
 
 [node name="OfferedItem1" parent="." unique_id=1611408139 instance=ExtResource("1_jn3au")]
 layout_mode = 2
-button_id = 1
 
 [node name="OfferedItem2" parent="." unique_id=456834454 instance=ExtResource("1_jn3au")]
 layout_mode = 2
-button_id = 2
+button_id = 1
 
 [node name="OfferedItem3" parent="." unique_id=1901204085 instance=ExtResource("1_jn3au")]
 layout_mode = 2
-button_id = 3
+button_id = 2
 
 [node name="OfferedItem4" parent="." unique_id=956919704 instance=ExtResource("1_jn3au")]
 layout_mode = 2
-button_id = 4
+button_id = 3

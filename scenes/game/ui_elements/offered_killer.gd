@@ -69,10 +69,8 @@ func _on_cooldown_timer_timeout() -> void:
 	item_ready = true
 	cooldown_bar.visible = false
 
-
 func _on_item_use_button_button_down() -> void:
 	SignalManager.box_selection.emit(button_id)
-
 
 func _on_upgrade_display_1_upgrade_button_press() -> void:
 	try_buy_upgrade(0)
@@ -127,3 +125,7 @@ func _on_upgrade_display_2_upgrade_button_hover() -> void:
 func _on_anything_stop_hover() -> void:
 	print("sto pHovering")
 	SignalManager.purchase_text.emit("epic support text")
+	
+func is_item_ready() -> bool:
+	print($ItemUseButton/CooldownBar.scale.y)
+	return ($ItemUseButton/CooldownBar.scale.y == 0.0)

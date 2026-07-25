@@ -12,6 +12,8 @@ func make_items():
 		Boxes[i].set_item(new_item)
 
 func select_button(selected_id : int):
+	if not Boxes[selected_id].item_ready:
+		return
 	if game.selected_offered_killer != null:
 		game.selected_offered_killer.deselect_button()
 	if game.hover_over_simulation and game.selected_item_instance != null:
