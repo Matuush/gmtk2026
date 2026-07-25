@@ -31,7 +31,8 @@ func _init() -> void:
 	can_sleep = false
 	sleeping = false
 	state = amoeba_state.waiting
-	
+
+func _ready() -> void:
 	do_after_time(WAITING_TIME, get_horny)
 
 func do_after_time(time: float, fn) -> void:
@@ -39,8 +40,8 @@ func do_after_time(time: float, fn) -> void:
 	timer.wait_time = time
 	timer.one_shot = true
 	timer.autostart = true
-	add_child(timer)
 	timer.timeout.connect(fn)
+	add_child(timer)
 	timer.start()
 
 func get_horny() -> void:
