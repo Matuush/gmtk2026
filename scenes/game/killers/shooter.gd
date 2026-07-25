@@ -26,13 +26,13 @@ func _on_stop_hover() -> void:
 
 func select_direction_to_closest_organism() -> Vector2:
 	print("Current coords: ", position)
-	var closest_organism : Vector2 = Vector2.ZERO
-	var cur_least_dist : float = 10000000.0
+	var direction : Vector2 = Vector2.ZERO
+	var cur_least_dist : float = -1
 	for enemy in simulation.enemies:
-		var vect_dist : Vector2 = enemy.position - position
-		if vect_dist.distance_to(position) < cur_least_dist:
-			closest_organism = vect_dist
-	return closest_organism.normalized()
+		var vect_dist : Vector2 = enemy.global_position - global_position
+		if cur_least_dist == -1 or vect_dist.length() < cur_least_dist:
+			direction = vect_dist
+	return direction.normalized()
 		
 
 func _on_shoot_timer_timeout() -> void:
