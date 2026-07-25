@@ -14,12 +14,9 @@ func set_collision_shape():
 func _process(delta: float) -> void:
 	if not hovering:
 		return
-	print("In process")
 	if Input.is_action_just_released("tower_rotate_left"):
-		print("Left")
 		rotation -= delta * rotation_velocity
 	if Input.is_action_just_released("tower_rotate_right"):
-		print("right")
 		rotation += delta * rotation_velocity
 
 func _on_place() -> void:
@@ -40,7 +37,6 @@ func _on_stop_hover() -> void:
 	hovering = false
 
 func _ready() -> void:
-	print("Ready")
 	placed = false
 	$PreviewSprite.visible = false
 	$EffectSprite.visible = false

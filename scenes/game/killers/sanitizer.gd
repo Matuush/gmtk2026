@@ -12,7 +12,6 @@ static var time_placed_addition : float = 0.25
 @export var preview_sprite : Sprite2D
 
 func _ready() -> void:
-	print("Ready")
 	update_sizes()
 	update_timer()
 	placed = false
@@ -25,7 +24,6 @@ func set_collision_shape():
 	$AreaEffect/CollisionShape2D.shape = circ_shape
 
 func _on_place() -> void:
-	print("I am placing")
 	placed = true
 	$DurationTimer.wait_time = time_placed
 	$DurationTimer.start()
@@ -51,14 +49,11 @@ func update_timer() -> void:
 	$DurationTimer.wait_time = time_placed
 
 func _on_duration_timer_timeout() -> void:
-	print("Timeout\n")
 	queue_free()
 
 func _on_area_effect_body_entered(body: Node2D) -> void:
-	print("Detecting col")
 	if not placed:
 		return
-	print("Body: ", body.position, "entered the sanitizer arr")
 	if is_instance_of(body, organism):
 		body.die()
 		

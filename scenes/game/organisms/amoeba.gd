@@ -17,7 +17,6 @@ func die() -> void:
 	if parent_scene != null:
 		parent_scene.remove_child($".")
 	queue_free()
-	print("Index: ", index)
 	AudioManager.play_bacteria_death_sound()
 	SignalManager.add_money.emit(DIE_REWARD)
 	
@@ -34,6 +33,7 @@ func _init() -> void:
 	state = amoeba_state.waiting
 
 func _ready() -> void:
+	linear_velocity = 5*Vector2(randf_range(-1,1), randf_range(-1,1))
 	do_after_time(WAITING_TIME, get_horny)
 
 func do_after_time(time: float, fn : Callable) -> void:

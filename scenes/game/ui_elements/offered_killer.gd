@@ -23,7 +23,7 @@ var upgrade_progresses : Array[int] = [0,0]
 func _ready() -> void:
 	SignalManager.item_used.connect(_on_use_item)
 
-func _physics_process(delta: float) -> void:
+func _physics_process(_delta: float) -> void:
 	if item_ready:
 		return
 	var s : float = $CooldownTimer.time_left / $CooldownTimer.wait_time
@@ -88,7 +88,7 @@ func try_buy_upgrade(upgrade_id : int) -> void:
 		
 	if upgrade_price > game.money:
 		SignalManager.error_message.emit(game.error_no_money)
-		return
+	
 	SignalManager.add_money.emit(-upgrade_price)
 	upgrade_progresses[upgrade_id] += 1
 	if upgrade_id == 0:

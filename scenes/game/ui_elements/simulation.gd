@@ -4,12 +4,13 @@ static var area_size : Vector2 = Vector2(800.0, 480.0)
 static var border_width : float = 32.0
 static var center : Vector2 = Vector2(border_width + area_size.x/2, border_width + area_size.y/2)
 
-const AMOEBA_LIMIT : int = 150
+const AMOEBA_LIMIT : int = 200
 const INITIAL_AMOEBA_COUNT : int = 20
 
 var my_time : float = 0.0
 static var enemies : Array = []
 static var killers : Array = []
+static var vabnicky : Array = []
 @export var amoeba_scene : PackedScene
 
 func _ready() -> void:
@@ -22,7 +23,7 @@ func get_random_spawn_location() -> Vector2:
 		randf_range(border_width, area_size.y - border_width)
 	)
 
-func _process(delta: float) -> void:
+func _process(_delta: float) -> void:
 	if game.selected_item_instance == null:
 		return
 	if game.hover_over_simulation:
@@ -42,6 +43,10 @@ func _process(delta: float) -> void:
 			SignalManager.item_used.emit()
 			game.selected_item_instance = null
 
+func _physics_process(delta: float) -> void:
+	for vab in vabnicky:
+		vab.sladke_vabeni(delta)
+
 func create_amoeba(pos: Vector2) -> void:
 	if enemies.size() < AMOEBA_LIMIT:
 		var new_amoeba = amoeba_scene.instantiate()
@@ -50,7 +55,3 @@ func create_amoeba(pos: Vector2) -> void:
 		enemies.push_back(new_amoeba)
 		add_child(new_amoeba)
 		SignalManager.enemy_count_changed.emit()
-   
-func _on_spawn_timer_timeout() -> void:
-	return
-	create_amoeba(get_random_spawn_location())
