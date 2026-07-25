@@ -33,6 +33,7 @@ func _init() -> void:
 	state = amoeba_state.waiting
 
 func _ready() -> void:
+	linear_velocity = 5*Vector2(randf_range(-1,1), randf_range(-1,1))
 	do_after_time(WAITING_TIME, get_horny)
 
 func do_after_time(time: float, fn) -> void:

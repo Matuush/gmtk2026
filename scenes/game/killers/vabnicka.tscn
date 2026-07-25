@@ -1,0 +1,22 @@
+[gd_scene format=3 uid="uid://gpn1sclp5co3"]
+
+[ext_resource type="Script" uid="uid://batcdhjujfyfw" path="res://scenes/game/killers/vabnicka.gd" id="1_5vass"]
+[ext_resource type="Texture2D" uid="uid://bo7jop332xjnt" path="res://assets/icon.svg" id="2_edgmo"]
+[ext_resource type="Texture2D" uid="uid://vb68ve5ckd4l" path="res://assets/game/killers/sanitizer_icon.png" id="3_c34ne"]
+
+[node name="Vabnicka" type="Node2D" unique_id=776549814]
+script = ExtResource("1_5vass")
+icon = ExtResource("2_edgmo")
+upgrade_texture_one = ExtResource("2_edgmo")
+upgrade_texture_two = ExtResource("2_edgmo")
+
+[node name="DurationTimer" type="Timer" parent="." unique_id=1579257451]
+one_shot = true
+
+[node name="PreviewSprite" type="Sprite2D" parent="." unique_id=2108141108]
+texture = ExtResource("2_edgmo")
+
+[node name="EffectSprite" type="Sprite2D" parent="." unique_id=834585758]
+texture = ExtResource("3_c34ne")
+
+[connection signal="timeout" from="DurationTimer" to="." method="_on_duration_timer_timeout"]

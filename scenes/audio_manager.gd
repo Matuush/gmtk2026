@@ -12,5 +12,8 @@ func play_shoot_sound() -> void:
 func play_bacteria_death_sound() -> void:
 	$BacteriaStream.play()
 
+func play_vabnicka_sound() -> void:
+	$PurchaseStream.play()
+
 func play_purchase_sound() -> void:
 	$PurchaseStream.play()
