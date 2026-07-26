@@ -61,7 +61,7 @@ func on_upgrade_two() -> void:
 	set_shape()
 
 func get_upgrade_one_description(phase : int) -> String:
-	return "Upgrade one description\ncost: 10"
+	return "[b]So much wider![/b]\nIncreases the width of the wall by 20%%\nCost: %d" % upgrade_one_costs[phase]
 
 func get_upgrade_two_description(phase : int) -> String:
-	return "Upgrade two description\ncost: 10"
+	return "[b]So much thicker![/b]\nIncreases the thickness of the wall by 20%%\nCost: %d" % upgrade_two_costs[phase]

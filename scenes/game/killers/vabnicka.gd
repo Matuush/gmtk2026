@@ -62,11 +62,8 @@ func on_upgrade_two() -> void:
 	time_placed *= time_placed_coeff
 	update_timer()
 
-func get_upgrade_one_description(_phase : int) -> String:
-	return "Increases the area of effect by 20%"
+func get_upgrade_one_description(phase : int) -> String:
+	return "[b]More love![/b]\nIncreases the area of effect by 20%%\nCost: %d" % upgrade_one_costs[phase]
 
 func get_upgrade_two_description(phase : int) -> String:
-	return "Increases the length of the effect by 20%\nCost: " + str(get_item_cost(0))
-
-func get_item_cost(phase : int) -> int:
-	return 10
+	return "[b]Longer love![/b]\nIncreases the length of the effect by 20%%\nCost: %d" % upgrade_two_costs[phase]

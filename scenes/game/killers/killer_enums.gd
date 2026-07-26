@@ -21,13 +21,13 @@ const scene_dictionary : Dictionary[names, PackedScene] = {
 const description_dictionary : Dictionary[names, String] = {
 	names.sanitizer : "[b]Sanitizer[/b]:\nDamages all enemies in a short area",
 	names.wall : "[b]Wall[/b]:\nBuilds a... uh.. wall",
-	names.vabnicka : "[b]Vabnicka[/b]:\nVabs the enemies in",
+	names.vabnicka : "[b]Lure[/b]:\nLures the enemies in",
 	names.shooter : "[b]Fart monkey[/b] (patent pending):\nPeriodically shoots a projectile at enemies"
 }
 
 static var cooldown_dictionary :  Dictionary[names, float] = {
 	names.sanitizer : 1.0,
-	names.wall : 2.0,
+	names.wall : 3.0,
 	names.vabnicka : 2.0,
-	names.shooter : 1.0
+	names.shooter : 2.0
 }

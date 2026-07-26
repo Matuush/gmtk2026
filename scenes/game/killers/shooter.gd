@@ -74,21 +74,25 @@ func _on_shoot_timer_timeout() -> void:
 	if bullets_left_in_chamber > 0:
 		$RoundShootTimer.start()
 
+
 func on_upgrade_one() -> void:
+	number_of_bullets += number_of_bullets_addition
+
+func on_upgrade_two() -> void:
 	shoot_interval *= shoot_interval_coeff
 	shoot_interval_update.emit()
 
 func _on_shoot_interval_update() -> void:
 	$ShootTimer.wait_time = shoot_interval
 
-func on_upgrade_two() -> void:
-	number_of_bullets += number_of_bullets_addition
+
 
 func get_upgrade_one_description(phase : int) -> String:
-	return "[b]Hasty as hell![/b]\nThe thingamajig shoots faster now!\ncost: %d" % upgrade_one_costs[phase]
+	return "[b]I will be so famas![/b]\nShoots more bullets now\ncost: %d" % upgrade_one_costs[phase]
+
 
 func get_upgrade_two_description(phase : int) -> String:
-	return "[b]I will be so famas![/b]\nShoots more bullets now\ncost: %d" % upgrade_two_costs[phase]
+	return "[b]Hasty as hell![/b]\nThe thingamajig shoots faster now!\ncost: %d" % upgrade_two_costs[phase]
 
 
 func _on_round_shoot_timer_timeout() -> void:

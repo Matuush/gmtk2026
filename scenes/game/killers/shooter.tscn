@@ -4,7 +4,7 @@
 [ext_resource type="PackedScene" uid="uid://y67pn0h66obu" path="res://scenes/game/killers/shooter_bullet.tscn" id="2_7bk1x"]
 [ext_resource type="Texture2D" uid="uid://c7i3ksillai72" path="res://assets/game/killers/gun_icon.png" id="3_d4ain"]
 [ext_resource type="Texture2D" uid="uid://bjkknsx071q6" path="res://assets/game/ui/faster_icon.png" id="5_6xw62"]
-[ext_resource type="Texture2D" uid="uid://bcjj67jmnksoo" path="res://assets/game/ui/full_orb.png" id="5_d4ain"]
+[ext_resource type="Texture2D" uid="uid://dmromeoxiq3d6" path="res://assets/game/killers/more_bullet.png" id="5_8e1pe"]
 [ext_resource type="Texture2D" uid="uid://cscco3jeus6gv" path="res://assets/game/killers/farter_preview.png" id="6_ldn46"]
 [ext_resource type="Texture2D" uid="uid://ujoy16irp8n8" path="res://assets/game/killers/farter_effect.png" id="7_6xw62"]
 
@@ -12,8 +12,8 @@
 script = ExtResource("1_6uktl")
 bullet_scene = ExtResource("2_7bk1x")
 icon = ExtResource("3_d4ain")
-upgrade_texture_one = ExtResource("5_6xw62")
-upgrade_texture_two = ExtResource("5_d4ain")
+upgrade_texture_one = ExtResource("5_8e1pe")
+upgrade_texture_two = ExtResource("5_6xw62")
 cost = 10
 upgrade_one_costs = Array[int]([20, 30, 40])
 upgrade_two_costs = Array[int]([20, 30, 40])

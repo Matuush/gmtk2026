@@ -1,7 +1,7 @@
 class_name game extends Node2D
 
 const killer_count : int = 4
-static var level_killers : Array[killer_enums.names] = [killer_enums.names.sanitizer, killer_enums.names.wall, killer_enums.names.vabnicka, killer_enums.names.shooter]
+static var level_killers : Array[killer_enums.names] = [killer_enums.names.sanitizer, killer_enums.names.shooter, killer_enums.names.wall, killer_enums.names.vabnicka]
 
 static var selected_offered_killer : offered_killer = null
 static var selected_item_instance = null
