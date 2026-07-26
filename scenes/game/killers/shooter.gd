@@ -8,9 +8,11 @@ static var shoot_interval : float = 0.8
 const shoot_interval_coeff : float = 0.8
 
 static var number_of_bullets : int = 1
-const number_of_bullets_coeff : int = 1
+const number_of_bullets_addtition : int = 1
 
-#const bullet
+const bullet_speed : float = 1000.0
+
+var bullets_left_in_chamber : int
 
 signal shoot_interval_update
 
@@ -37,15 +39,15 @@ func _on_stop_hover() -> void:
 func select_direction_to_closest_organism() -> Vector2:
 	print("Current coords: ", position)
 	var direction : Vector2 = Vector2.ZERO
-	var cur_least_dist : float = -1
+	var cur_least_dist : float = 1000000.0
 	for enemy in simulation.enemies:
 		var vect_dist : Vector2 = enemy.global_position - global_position
-		if cur_least_dist == -1 or vect_dist.length() < cur_least_dist:
+		if vect_dist.length() < cur_least_dist:
+			cur_least_dist = vect_dist.length()
 			direction = vect_dist
 	return direction.normalized()
-		
 
-func _on_shoot_timer_timeout() -> void:
+func shoot_bullet() -> void:
 	print("Placing bullet")
 	if not placed:
 		return
@@ -53,10 +55,17 @@ func _on_shoot_timer_timeout() -> void:
 		return
 	var new_bullet = bullet_scene.instantiate()
 	var direction : Vector2 = select_direction_to_closest_organism()
-	new_bullet.linear_velocity = 1000.0 * direction
+	new_bullet.linear_velocity = bullet_speed * direction
 	new_bullet.rotation = direction.angle()
 	add_child(new_bullet)
 	AudioManager.play_shoot_sound()
+
+func _on_shoot_timer_timeout() -> void:
+	shoot_bullet()
+	bullets_left_in_chamber = number_of_bullets - 1
+	print("Bullets: ", (number_of_bullets - 1))
+	if bullets_left_in_chamber > 0:
+		$RoundShootTimer.start()
 
 func on_upgrade_one() -> void:
 	shoot_interval *= shoot_interval_coeff
@@ -66,10 +75,17 @@ func _on_shoot_interval_update() -> void:
 	$ShootTimer.wait_time = shoot_interval
 
 func on_upgrade_two() -> void:
-	return 
+	number_of_bullets += number_of_bullets_addtition
 
 func get_upgrade_one_description(phase : int) -> String:
 	return "[b]Hasty as hell![/b]\nThe thingamajig shoots faster now!\ncost: %d" % upgrade_one_costs[phase]
 
 func get_upgrade_two_description(phase : int) -> String:
 	return "[b]I will be so famas![/b]\nShoots more bullets now\ncost: %d" % upgrade_two_costs[phase]
+
+
+func _on_round_shoot_timer_timeout() -> void:
+	shoot_bullet()
+	bullets_left_in_chamber -= 1
+	if bullets_left_in_chamber > 0:
+		$RoundShootTimer.start()
