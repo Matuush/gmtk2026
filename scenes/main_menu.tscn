@@ -35,14 +35,30 @@ corner_detail = 6
 
 [sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_ekxnf"]
 
-[node name="MainMenu" type="Node2D" unique_id=1576969093 node_paths=PackedStringArray("volume_slider")]
+[node name="MainMenu" type="Node2D" unique_id=1576969093 node_paths=PackedStringArray("volume_slider", "music_volume_slider")]
 script = ExtResource("1_l6cm7")
 volume_slider = NodePath("Settings/SettingsChoices/Control/HBoxContainer/VolumeSlider")
+music_volume_slider = NodePath("Settings/SettingsChoices/Control2/HBoxContainer/MusicSlider")
 
 [node name="Background" type="ColorRect" parent="." unique_id=893512245]
 offset_right = 1280.0
 offset_bottom = 720.0
 color = Color(0.48402083, 0.29829484, 0.5011851, 1)
+
+[node name="Label" type="Label" parent="Background" unique_id=1409477072]
+layout_mode = 1
+anchors_preset = -1
+anchor_top = 0.1
+anchor_right = 1.0
+anchor_bottom = 0.4
+offset_left = -0.5
+offset_right = -0.5
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_font_sizes/font_size = 100
+text = "BACTEREUM"
+horizontal_alignment = 1
+vertical_alignment = 1
 
 [node name="MenuButtons" type="VBoxContainer" parent="." unique_id=424570394]
 offset_left = 913.0
@@ -61,11 +77,13 @@ size_flags_vertical = 3
 text = "Settings"
 
 [node name="Dimrect" type="ColorRect" parent="." unique_id=140405439]
+visible = false
 offset_right = 1280.0
 offset_bottom = 720.0
 color = Color(0, 0, 0, 0.6117647)
 
 [node name="BackButton" type="Button" parent="." unique_id=1414824239]
+visible = false
 offset_left = 50.0
 offset_top = 50.0
 offset_right = 200.0
@@ -74,6 +92,7 @@ text = "BACK
 "
 
 [node name="Settings" type="Control" parent="." unique_id=1886790447]
+visible = false
 layout_mode = 3
 anchors_preset = 0
 offset_left = 440.0
@@ -118,8 +137,9 @@ grow_vertical = 2
 
 [node name="VolumeLabel" type="Label" parent="Settings/SettingsChoices/Control/HBoxContainer" unique_id=1810331215]
 layout_mode = 2
+size_flags_horizontal = 3
 size_flags_vertical = 1
-size_flags_stretch_ratio = 3.0
+size_flags_stretch_ratio = 2.0
 theme_override_styles/normal = SubResource("StyleBoxEmpty_l6cm7")
 text = "Master Volume: "
 vertical_alignment = 1
@@ -143,8 +163,54 @@ size_flags_horizontal = 3
 theme_override_styles/normal = SubResource("StyleBoxEmpty_ekxnf")
 text = "TRY!"
 
+[node name="Control2" type="Control" parent="Settings/SettingsChoices" unique_id=1339909069]
+custom_minimum_size = Vector2(0, 50)
+layout_mode = 2
+
+[node name="HBoxContainer" type="HBoxContainer" parent="Settings/SettingsChoices/Control2" unique_id=2132864854]
+layout_mode = 1
+anchors_preset = -1
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = 10.0
+offset_top = 10.0
+offset_right = -10.0
+offset_bottom = -10.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="MusicLabel" type="Label" parent="Settings/SettingsChoices/Control2/HBoxContainer" unique_id=233279398]
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_vertical = 1
+size_flags_stretch_ratio = 2.0
+theme_override_styles/normal = SubResource("StyleBoxEmpty_l6cm7")
+text = "Music Volume: "
+vertical_alignment = 1
+
+[node name="MusicSlider" type="HSlider" parent="Settings/SettingsChoices/Control2/HBoxContainer" unique_id=647150555]
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_vertical = 1
+size_flags_stretch_ratio = 3.0
+theme_override_constants/center_grabber = 1
+theme_override_styles/slider = SubResource("StyleBoxFlat_oa1go")
+theme_override_styles/grabber_area = SubResource("StyleBoxFlat_tbmy8")
+theme_override_styles/grabber_area_highlight = SubResource("StyleBoxFlat_tbmy8")
+max_value = 1.0
+step = 0.01
+value = 0.5
+
+[node name="TryAgain" type="Button" parent="Settings/SettingsChoices/Control2/HBoxContainer" unique_id=217660115]
+layout_mode = 2
+size_flags_horizontal = 3
+theme_override_styles/normal = SubResource("StyleBoxEmpty_ekxnf")
+disabled = true
+text = "listen"
+
 [connection signal="button_down" from="MenuButtons/NewGameButton" to="." method="_on_new_game_button_button_down"]
 [connection signal="button_down" from="MenuButtons/SettingsButon" to="." method="_on_settings_buton_button_down"]
 [connection signal="button_down" from="BackButton" to="." method="_on_back_button_button_down"]
 [connection signal="drag_ended" from="Settings/SettingsChoices/Control/HBoxContainer/VolumeSlider" to="." method="_on_volume_slider_drag_ended"]
 [connection signal="button_down" from="Settings/SettingsChoices/Control/HBoxContainer/VolumeTry" to="." method="_on_volume_try_button_down"]
+[connection signal="drag_ended" from="Settings/SettingsChoices/Control2/HBoxContainer/MusicSlider" to="." method="_on_music_slider_drag_ended"]

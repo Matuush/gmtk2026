@@ -1,6 +1,7 @@
 extends Node2D
 
 @export var volume_slider : Slider 
+@export var music_volume_slider : Slider 
 
 func _ready() -> void:
 	_on_volume_slider_drag_ended(true)
@@ -13,6 +14,9 @@ func _on_new_game_button_button_down() -> void:
 func _on_volume_slider_drag_ended(value_changed: bool) -> void:
 	#print("Changing to : ", volume_slider.value)
 	SignalManager.volume_change.emit(volume_slider.value)
+
+func _on_music_slider_drag_ended(value_changed: bool) -> void:
+	SignalManager.music_volume_change.emit(music_volume_slider.value)
 
 func hide_settings() -> void:
 	$MenuButtons.visible = true

@@ -7,6 +7,7 @@ signal on_new_game()
 
 signal change_game_state (new_state : main.game_state)
 signal volume_change (new_value : float)
+signal music_volume_change (new_value : float)
 
 signal enemy_leave_scene(enemy : amoeba)
 signal enemy_count_changed

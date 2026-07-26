@@ -8,6 +8,8 @@ var purchase_base_volue : float
 var vabnicka_base_volue : float
 var click_base_volue : float
 
+var music_base_volume : float
+
 func _ready() -> void:
 	sanitizer_base_volue = $SanitizerStream.volume_linear
 	shoot_base_volue = $ShootStream.volume_linear
@@ -16,7 +18,12 @@ func _ready() -> void:
 	purchase_base_volue = $PurchaseStream.volume_linear
 	vabnicka_base_volue = $VabnickaStream.volume_linear
 	click_base_volue = $ClickStream.volume_linear
+	
+	music_base_volume = $MusicStream.volume_linear
+	$MusicStream.autoplay = true
+	
 	SignalManager.volume_change.connect(volume_change)
+	SignalManager.music_volume_change.connect(music_volume_change)
 
 func volume_change(new_coeff : float) -> void:
 	$SanitizerStream.volume_linear = sanitizer_base_volue * new_coeff
@@ -27,9 +34,14 @@ func volume_change(new_coeff : float) -> void:
 	$VabnickaStream.volume_linear = vabnicka_base_volue * new_coeff
 	$ClickStream.volume_linear = click_base_volue * new_coeff
 
+
+func music_volume_change(new_coeff : float) -> void:
+	$MusicStream.volume_linear = music_base_volume * new_coeff
+
+
 func play_sanitizer_sound() -> void:
 	$SanitizerStream.play()
-	
+
 func play_industrial_build_sound() -> void:
 	$WallStream.play()
 

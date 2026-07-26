@@ -88,11 +88,11 @@ func _on_shoot_interval_update() -> void:
 
 
 func get_upgrade_one_description(phase : int) -> String:
-	return "[b]I will be so famas![/b]\nShoots more bullets now\ncost: %d" % upgrade_one_costs[phase]
+	return "[b]I will be so famas![/b]\nShoots more bullets now\nCost: %d" % upgrade_one_costs[phase]
 
 
 func get_upgrade_two_description(phase : int) -> String:
-	return "[b]Hasty as hell![/b]\nThe thingamajig shoots faster now!\ncost: %d" % upgrade_two_costs[phase]
+	return "[b]Hasty as hell![/b]\nThe thingamajig shoots faster now!\nCost: %d" % upgrade_two_costs[phase]
 
 
 func _on_round_shoot_timer_timeout() -> void:
