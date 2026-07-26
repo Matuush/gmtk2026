@@ -53,10 +53,12 @@ func _ready() -> void:
 	$DisplayRect.visible = false
 
 func on_upgrade_one() -> void:
-	thickness *= thickness_upgrade_factor
+	length *= length_upgrade_factor
+	set_shape()
 
 func on_upgrade_two() -> void:
-	length *= length_upgrade_factor
+	thickness *= thickness_upgrade_factor
+	set_shape()
 
 func get_upgrade_one_description(phase : int) -> String:
 	return "Upgrade one description\ncost: 10"
