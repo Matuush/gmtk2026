@@ -10,7 +10,7 @@ func _on_new_game_button_button_down() -> void:
 	SignalManager.change_game_state.emit(main.game_state.game)
 
 func _on_volume_slider_drag_ended(value_changed: bool) -> void:
-	print("Changing to : ", volume_slider.value)
+	#print("Changing to : ", volume_slider.value)
 	SignalManager.volume_change.emit(volume_slider.value)
 
 func hide_settings() -> void:

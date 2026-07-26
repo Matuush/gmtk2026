@@ -42,7 +42,28 @@ func hide_game_over_screen() -> void:
 func show_game_over_screen() -> void:
 	$EndScreen.visible = true
 
+func check_hover() -> void:
+	var cur_hover_over_simulation : bool
+	var center : Vector2 = $Simulation/Sprite2D.global_position
+	var radius : float = ($Simulation/Sprite2D.texture.get_width() / 2) * $Simulation/Sprite2D.scale.x
+	var vect_from_center : Vector2 = center - get_global_mouse_position()
+	var dist : float = vect_from_center.length()
+	cur_hover_over_simulation = (dist <= radius)
+	#print(str(cur_hover_over_simulation) + str(vect_from_center) + str(dist))
+	var diff : bool = hover_over_simulation != cur_hover_over_simulation
+	hover_over_simulation = cur_hover_over_simulation
+	
+	if diff:
+		if cur_hover_over_simulation:
+			if selected_item_instance != null:
+				selected_item_instance._on_hover()
+		else:
+			if selected_item_instance != null:
+				selected_item_instance._on_stop_hover()
+
 func _process(_delta : float) -> void:
+	check_hover()
+	
 	if Input.is_action_just_pressed("select_item_1"):
 		$KillerSelectionBox.select_button(0)
 	if Input.is_action_just_pressed("select_item_2"):
@@ -54,17 +75,6 @@ func _process(_delta : float) -> void:
 
 func _on_item_selected():
 	print("Selected new item")
-	#add_child(selected_item_instance)
-
-func _on_event_checker_mouse_entered() -> void:
-	hover_over_simulation = true
-	if selected_item_instance != null:
-		selected_item_instance._on_hover()
-
-func _on_event_checker_mouse_exited() -> void:
-	hover_over_simulation = false
-	if selected_item_instance != null:
-		selected_item_instance._on_stop_hover()
 
 func _on_enemy_count_change() -> void:
 	var new_enemy_count : int = simulation.enemies.size()

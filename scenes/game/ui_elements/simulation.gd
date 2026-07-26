@@ -1,6 +1,5 @@
 class_name simulation extends Node2D
 
-static var area_size : Vector2 = Vector2(800.0, 480.0)
 static var border_width : float = 32.0
 static var center : Vector2 = Vector2(470,250)
 static var radius : float = 200
@@ -46,15 +45,13 @@ func new_game() -> void:
 
 func get_random_spawn_location() -> Vector2:
 	return center + Vector2.ONE.rotated(randf_range(0,2*PI))*randf_range(0, radius)
-	return Vector2(
-		randf_range(border_width, area_size.x - border_width),
-		randf_range(border_width, area_size.y - border_width)
-	)
 
 func _process(_delta: float) -> void:
+	#print("no instance")
 	if game.selected_item_instance == null:
 		return
 	if game.hover_over_simulation:
+		#print("Hovering")
 		game.selected_item_instance.global_position = get_global_mouse_position()
 		if Input.is_action_just_pressed("tower_place"):
 			if game.selected_offered_killer == null:

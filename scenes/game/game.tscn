@@ -62,13 +62,6 @@ expand_mode = 2
 [node name="Simulation" parent="." unique_id=108406509 instance=ExtResource("4_5i0tg")]
 position = Vector2(13, 109)
 
-[node name="EventChecker" type="Control" parent="Simulation" unique_id=1060536306]
-layout_mode = 3
-anchors_preset = 0
-offset_left = 1.0
-offset_right = 802.0
-offset_bottom = 479.0
-
 [node name="KillerSelectionBox" parent="." unique_id=1654676121 instance=ExtResource("4_lfrn8")]
 offset_left = 913.0
 offset_top = 106.0
@@ -80,10 +73,12 @@ alignment = 0
 one_shot = true
 
 [node name="EndScreen" type="Control" parent="." unique_id=6110943]
+visible = false
 layout_mode = 3
 anchors_preset = 0
 offset_right = 1280.0
 offset_bottom = 720.0
+mouse_filter = 2
 
 [node name="GameOverDim" type="ColorRect" parent="EndScreen" unique_id=1316651793]
 layout_mode = 1
@@ -141,8 +136,6 @@ layout_mode = 2
 size_flags_horizontal = 2
 text = "Try Again"
 
-[connection signal="mouse_entered" from="Simulation/EventChecker" to="." method="_on_event_checker_mouse_entered"]
-[connection signal="mouse_exited" from="Simulation/EventChecker" to="." method="_on_event_checker_mouse_exited"]
 [connection signal="timeout" from="ErrorMessageTimer" to="." method="_on_error_message_timer_timeout"]
 [connection signal="button_down" from="EndScreen/GUI/ButtonBox/MenuButton" to="." method="_on_menu_button_button_down"]
 [connection signal="button_down" from="EndScreen/GUI/ButtonBox/RetryButton" to="." method="_on_retry_button_button_down"]
