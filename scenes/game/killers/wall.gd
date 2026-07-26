@@ -6,6 +6,9 @@ var hovering : bool
 const rotation_velocity : float = 10.0
 #static var time_placed : float = 10.0
 
+func on_new_game() -> void:
+	pass
+
 func set_collision_shape():
 	var rect_shape : RectangleShape2D = RectangleShape2D.new()
 	rect_shape.size = $EffectSprite.size

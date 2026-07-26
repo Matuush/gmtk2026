@@ -1,6 +1,5 @@
 [gd_scene format=3 uid="uid://p47lpuxt1ryt"]
 
-[ext_resource type="Texture2D" uid="uid://dx62rm5ouogar" path="res://assets/game/ui/wider_icon.png" id="1_g8t1w"]
 [ext_resource type="Texture2D" uid="uid://dlodocp1my6di" path="res://assets/game/ui/empty_orb.png" id="1_smflu"]
 [ext_resource type="Script" uid="uid://ctio14xmq4nhv" path="res://scenes/game/ui_elements/upgrade_display.gd" id="1_ynsfe"]
 
@@ -13,7 +12,6 @@ offset_bottom = -631.0
 grow_horizontal = 2
 grow_vertical = 2
 script = ExtResource("1_ynsfe")
-upgrade_icon = ExtResource("1_g8t1w")
 
 [node name="BuyButton" type="Button" parent="." unique_id=81964244]
 layout_mode = 2

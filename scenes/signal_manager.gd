@@ -3,9 +3,12 @@ extends Node
 signal item_selected
 signal item_used
 
+signal on_new_game()
+
 signal change_game_state (new_state : main.game_state)
 signal volume_change (new_value : float)
 
+signal enemy_leave_scene(enemy : amoeba)
 signal enemy_count_changed
 
 signal box_selection(button_id : int)

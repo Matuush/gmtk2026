@@ -13,15 +13,28 @@ signal upgrade_button_stop_hover
 
 var is_maxxed : bool = false
 
+func new_game() -> void:
+	for i in indicators:
+		i.texture = empty_indicator_texture
+	disindicate_looksmaxxing()
+
 func _ready() -> void:
 	indicators = [$BuyIndicator1, $BuyIndicator2, $BuyIndicator3]
+	SignalManager.on_new_game.connect(new_game)
+	disindicate_looksmaxxing()
 
 func set_upgrade_icon(new_icon : Texture2D):
+	upgrade_icon = new_icon
 	$BuyButton/UpgradeIcon.texture = new_icon
 
 func indicate_upgrade(indicator_id : int):
 	indicators[indicator_id].texture = full_indicator_texture
 	AudioManager.play_purchase_sound()
+
+func disindicate_looksmaxxing():
+	$BuyButton/UpgradeIcon.texture = upgrade_icon
+	$BuyButton.disabled = false
+	is_maxxed = true
 
 func indicate_looksmaxxing():
 	$BuyButton/UpgradeIcon.texture = maxxed_icon

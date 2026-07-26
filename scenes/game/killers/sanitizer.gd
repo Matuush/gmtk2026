@@ -2,14 +2,20 @@ class_name sanitizer extends killer
 
 var placed : bool
 
-static var sanitizer_size : float = 100.0
+const sanitizer_size_initial : float = 100
+static var sanitizer_size : float
 static var sanitizer_size_coeff : float = 1.2
 
-static var time_placed : float = 1.0
+const time_placed_initial : float = 1.0
+static var time_placed : float
 static var time_placed_addition : float = 0.25
 
 @export var effect_sprite : Sprite2D
 @export var preview_sprite : Sprite2D
+
+func on_new_game() -> void:
+	sanitizer_size = sanitizer_size_initial
+	time_placed = time_placed_initial
 
 func _ready() -> void:
 	update_sizes()
@@ -49,6 +55,8 @@ func update_timer() -> void:
 	$DurationTimer.wait_time = time_placed
 
 func _on_duration_timer_timeout() -> void:
+	var idx : int = simulation.killers.find($".")
+	simulation.killers.remove_at(idx)
 	queue_free()
 
 func _on_area_effect_body_entered(body: Node2D) -> void:

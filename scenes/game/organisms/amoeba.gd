@@ -10,15 +10,10 @@ const PAIRING_DISTANCE : float = 30
 const DIE_REWARD : int = 1
 
 func die() -> void:
-	var index = simulation.enemies.find($".")
-	simulation.enemies.remove_at(index)
-	SignalManager.enemy_count_changed.emit()
-	var parent_scene = get_parent()
-	if parent_scene != null:
-		parent_scene.remove_child($".")
-	queue_free()
+	SignalManager.enemy_leave_scene.emit($".")
 	AudioManager.play_bacteria_death_sound()
 	SignalManager.add_money.emit(DIE_REWARD)
+	simulation.amoebas_murdered += 1
 	
 func _init() -> void:
 	sprite_texture = preload("res://assets/game/organisms/bacteria.png")

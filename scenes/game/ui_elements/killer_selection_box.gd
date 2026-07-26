@@ -1,6 +1,7 @@
 class_name killer_selection_box extends VBoxContainer
 
 @export var Boxes : Array[offered_killer] 
+const idle_string : String = "[b]Over here!! Buy some stuff!!![/b]" 
 
 func _ready() -> void:
 	SignalManager.box_selection.connect(select_button)
@@ -28,4 +29,6 @@ func select_button(selected_id : int):
 	SignalManager.item_selected.emit()
 
 func display_text(new_text : String):
+	if new_text == "":
+		new_text = idle_string
 	$InfoDisplay.text = new_text

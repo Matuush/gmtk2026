@@ -79,6 +79,70 @@ alignment = 0
 [node name="ErrorMessageTimer" type="Timer" parent="." unique_id=272295056]
 one_shot = true
 
+[node name="EndScreen" type="Control" parent="." unique_id=6110943]
+layout_mode = 3
+anchors_preset = 0
+offset_right = 1280.0
+offset_bottom = 720.0
+
+[node name="GameOverDim" type="ColorRect" parent="EndScreen" unique_id=1316651793]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+color = Color(0, 0, 0, 0.654902)
+
+[node name="GUI" type="VBoxContainer" parent="EndScreen" unique_id=627290037]
+layout_mode = 1
+anchors_preset = -1
+anchor_top = 0.1
+anchor_right = 1.0
+anchor_bottom = 0.3
+offset_bottom = 306.0
+theme_override_constants/separation = 40
+
+[node name="GameOverLabel" type="Label" parent="EndScreen/GUI" unique_id=312908903]
+layout_mode = 2
+theme_override_font_sizes/font_size = 72
+text = "GAME OVER"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="GameOverReasonLabel" type="Label" parent="EndScreen/GUI" unique_id=47282507]
+layout_mode = 2
+theme_override_font_sizes/font_size = 36
+text = "you died cuz L"
+horizontal_alignment = 1
+
+[node name="StatsLabel" type="Label" parent="EndScreen/GUI" unique_id=1797532572]
+layout_mode = 2
+text = "You killed 200 amoebas"
+horizontal_alignment = 1
+
+[node name="Separator" type="Control" parent="EndScreen/GUI" unique_id=342201387]
+custom_minimum_size = Vector2(0, 100)
+layout_mode = 2
+
+[node name="ButtonBox" type="HBoxContainer" parent="EndScreen/GUI" unique_id=545337874]
+layout_mode = 2
+theme_override_constants/separation = 30
+
+[node name="MenuButton" type="Button" parent="EndScreen/GUI/ButtonBox" unique_id=1989233835]
+custom_minimum_size = Vector2(220, 60)
+layout_mode = 2
+size_flags_horizontal = 10
+text = "Main Menu"
+
+[node name="RetryButton" type="Button" parent="EndScreen/GUI/ButtonBox" unique_id=589537701]
+custom_minimum_size = Vector2(220, 60)
+layout_mode = 2
+size_flags_horizontal = 2
+text = "Try Again"
+
 [connection signal="mouse_entered" from="Simulation/EventChecker" to="." method="_on_event_checker_mouse_entered"]
 [connection signal="mouse_exited" from="Simulation/EventChecker" to="." method="_on_event_checker_mouse_exited"]
 [connection signal="timeout" from="ErrorMessageTimer" to="." method="_on_error_message_timer_timeout"]
+[connection signal="button_down" from="EndScreen/GUI/ButtonBox/MenuButton" to="." method="_on_menu_button_button_down"]
+[connection signal="button_down" from="EndScreen/GUI/ButtonBox/RetryButton" to="." method="_on_retry_button_button_down"]

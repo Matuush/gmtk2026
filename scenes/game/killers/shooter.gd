@@ -4,17 +4,24 @@ class_name shooter extends killer
 
 var placed : bool
 
-static var shoot_interval : float = 0.8
+const shoot_interval_initial : float = 0.8
+static var shoot_interval : float 
 const shoot_interval_coeff : float = 0.8
 
-static var number_of_bullets : int = 1
-const number_of_bullets_addtition : int = 1
+
+const number_of_bullets_initial : int = 1
+static var number_of_bullets : int
+const number_of_bullets_addition : int = 1
 
 const bullet_speed : float = 1000.0
 
 var bullets_left_in_chamber : int
 
 signal shoot_interval_update
+
+func on_new_game() -> void:
+	number_of_bullets = number_of_bullets_initial
+	shoot_interval = shoot_interval_initial
 
 func _ready() -> void:
 	placed = false
@@ -75,7 +82,7 @@ func _on_shoot_interval_update() -> void:
 	$ShootTimer.wait_time = shoot_interval
 
 func on_upgrade_two() -> void:
-	number_of_bullets += number_of_bullets_addtition
+	number_of_bullets += number_of_bullets_addition
 
 func get_upgrade_one_description(phase : int) -> String:
 	return "[b]Hasty as hell![/b]\nThe thingamajig shoots faster now!\ncost: %d" % upgrade_one_costs[phase]

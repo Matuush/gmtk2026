@@ -23,3 +23,5 @@ var is_hovering : bool
 @abstract func get_upgrade_one_description(phase : int) -> String
 
 @abstract func get_upgrade_two_description(phase : int) -> String
+
+@abstract func on_new_game() -> void

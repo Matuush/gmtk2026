@@ -2,11 +2,17 @@ class_name vabnicka extends killer
 
 var placed : bool
 
-@export var vabnicka_strength : float = PI / 200
+const vabnicka_strength_initial = PI / 200
+static var vabnicka_strength : float
 static var vabnicka_strength_coeff : float = 1.2
 
-static var time_placed : float = 4.0
+const time_placed_initial = 4.0
+static var time_placed : float
 static var time_placed_coeff : float = 1.2
+
+func on_new_game() -> void:
+	time_placed = time_placed_initial
+	vabnicka_strength = vabnicka_strength_initial
 
 func _ready() -> void:
 	update_timer()
@@ -43,8 +49,10 @@ func update_timer() -> void:
 	$DurationTimer.wait_time = time_placed
 
 func _on_duration_timer_timeout() -> void:
-	var index = simulation.vabnicky.find($".")
-	simulation.vabnicky.remove_at(index)
+	var v_index = simulation.vabnicky.find($".")
+	simulation.vabnicky.remove_at(v_index)
+	var k_index = simulation.killers.find($".")
+	simulation.killers.remove_at(k_index)
 	queue_free()
 
 func on_upgrade_one() -> void:

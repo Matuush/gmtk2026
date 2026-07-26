@@ -12,3 +12,6 @@ func _on_game_state_change(new_state : game_state):
 		$MainMenu.visible = false
 		$Game.visible = true
 		$Game.start_game()
+	if current_game_state == game_state.menu:
+		$MainMenu.visible = true
+		$Game.visible = false

@@ -11,19 +11,36 @@ static var hover_over_simulation : bool = false
 const STARTING_CASH = 20
 static var money : int = 5000
 
+static var game_over_reason : String
+
 @export var killer_box : killer_selection_box
 
 func _ready():
-	$KillerSelectionBox.make_items()
 	SignalManager.item_selected.connect(_on_item_selected)
-	SignalManager.enemy_count_changed.connect(_on_enemy_count_change)
 	SignalManager.add_money.connect(_on_add_money)
 	SignalManager.error_message.connect(_on_error_message)
+	SignalManager.enemy_count_changed.connect(_on_enemy_count_change)
+	hide_game_over_screen()
 	
 func start_game() -> void:
 	SignalManager.add_money.emit(STARTING_CASH - money)
-	SignalManager.enemy_count_changed.emit()
 	$Simulation.new_game()
+	_on_enemy_count_change()
+	hide_game_over_screen()
+	$KillerSelectionBox.make_items()
+	SignalManager.on_new_game.emit()
+
+func game_over() -> void:
+	show_game_over_screen()
+	$EndScreen/GUI/GameOverReasonLabel.text = game_over_reason
+	var murder_count : int = simulation.amoebas_murdered
+	$EndScreen/GUI/StatsLabel.text = "You murdered %d amoebas" % murder_count
+	
+func hide_game_over_screen() -> void:
+	$EndScreen.visible = false
+	
+func show_game_over_screen() -> void:
+	$EndScreen.visible = true
 
 func _process(_delta : float) -> void:
 	if Input.is_action_just_pressed("select_item_1"):
@@ -37,7 +54,7 @@ func _process(_delta : float) -> void:
 
 func _on_item_selected():
 	print("Selected new item")
-	add_child(selected_item_instance)
+	#add_child(selected_item_instance)
 
 func _on_event_checker_mouse_entered() -> void:
 	hover_over_simulation = true
@@ -50,7 +67,14 @@ func _on_event_checker_mouse_exited() -> void:
 		selected_item_instance._on_stop_hover()
 
 func _on_enemy_count_change() -> void:
-	$HUDBox/EnemyCountLabel.text = " %d" % simulation.enemies.size()
+	var new_enemy_count : int = simulation.enemies.size()
+	$HUDBox/EnemyCountLabel.text = " %d" % new_enemy_count
+	if new_enemy_count == 0:
+		game_over_reason = "All your shit dried"
+		game_over()
+	elif new_enemy_count == simulation.AMOEBA_LIMIT:
+		game_over_reason = "They bred too much"
+		game_over()
 
 func _on_add_money(added_money : int) -> void:
 	game.money += added_money
@@ -65,3 +89,11 @@ const error_no_money : String = "Not enough money!"
 
 func _on_error_message_timer_timeout() -> void:
 	$HUDBox/ErrorMessageLabel.visible = false
+
+func _on_retry_button_button_down() -> void:
+	start_game()
+	SignalManager.on_new_game.emit()
+
+func _on_menu_button_button_down() -> void:
+	$Simulation.delete_old_game()
+	SignalManager.change_game_state.emit(main.game_state.menu)

@@ -20,8 +20,12 @@ var upgrade_progresses : Array[int] = [0,0]
 
 @export var upgrade_displays : Array[upgrade_display]
 
+func new_game() -> void:
+	upgrade_progresses = [0,0]
+
 func _ready() -> void:
 	SignalManager.item_used.connect(_on_use_item)
+	SignalManager.on_new_game.connect(new_game)
 
 func _physics_process(_delta: float) -> void:
 	if item_ready:
@@ -33,6 +37,8 @@ func set_item(new_item : killer_enums.names):
 	killer_enum_name = new_item
 	killer_scene = killer_enums.scene_dictionary[new_item]
 	killer_current_instance = killer_scene.instantiate()
+	killer_current_instance.on_new_game()
+	add_child(killer_current_instance)
 	
 	upgrade_displays[0].set_upgrade_icon(killer_current_instance.upgrade_texture_one)
 	upgrade_displays[1].set_upgrade_icon(killer_current_instance.upgrade_texture_two)
@@ -59,6 +65,7 @@ func use_item():
 	cooldown_bar.visible = true
 	cooldown_bar.scale.y = 1.0
 	killer_current_instance = killer_scene.instantiate()
+	add_child(killer_current_instance)
 	game.selected_item_instance = killer_current_instance
 	deselect_button()
 
@@ -88,6 +95,7 @@ func try_buy_upgrade(upgrade_id : int) -> void:
 		
 	if upgrade_price > game.money:
 		SignalManager.error_message.emit(game.error_no_money)
+		return
 	
 	SignalManager.add_money.emit(-upgrade_price)
 	upgrade_progresses[upgrade_id] += 1
