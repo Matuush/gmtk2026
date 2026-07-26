@@ -14,6 +14,7 @@ func play_bacteria_death_sound() -> void:
 
 func play_vabnicka_sound() -> void:
 	$VabnickaStream.play()
+	$VabnickaStream.seek(0.81)
 
 func play_purchase_sound() -> void:
 	$PurchaseStream.play()
