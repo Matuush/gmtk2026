@@ -4,14 +4,20 @@ var placed : bool
 var hovering : bool
 
 const rotation_velocity : float = 10.0
-#static var time_placed : float = 10.0
+static var thickness : float = 20
+static var length : float = 100
 
 func on_new_game() -> void:
 	pass
 
-func set_collision_shape():
+static var thickness_upgrade_factor : float = 1.2
+static var length_upgrade_factor : float = 1.2
+
+
+func set_shape():
+	$DisplayRect.size = Vector2(length, thickness)   # width, height	
 	var rect_shape : RectangleShape2D = RectangleShape2D.new()
-	rect_shape.size = $EffectSprite.size
+	rect_shape.size = $DisplayRect.size
 	$CollisionShape2D.shape = rect_shape
 
 func _process(delta: float) -> void:
@@ -25,30 +31,32 @@ func _process(delta: float) -> void:
 func _on_place() -> void:
 	print("I am placing")
 	placed = true
-	$PreviewSprite.visible = false
-	$EffectSprite.visible = true
+	$DisplayRect.visible = true
+	$DisplayRect.color = Color(0,0,0)
 	AudioManager.play_industrial_build_sound()
 	hovering = false
-	set_collision_shape()
+	set_shape()
 	
 func _on_hover() -> void:
-	$PreviewSprite.visible = true
+	$DisplayRect.visible = true
+	$DisplayRect.color = Color(1,0,0)
 	hovering = true
 	
 func _on_stop_hover() -> void:
-	$PreviewSprite.visible = false
+	$DisplayRect.visible = false
 	hovering = false
 
 func _ready() -> void:
+	$DisplayRect.global_position = global_position - Vector2(length/2, thickness/2)
+	set_shape()
 	placed = false
-	$PreviewSprite.visible = false
-	$EffectSprite.visible = false
+	$DisplayRect.visible = false
 
 func on_upgrade_one() -> void:
-	return 
+	thickness *= thickness_upgrade_factor
 
 func on_upgrade_two() -> void:
-	return 
+	length *= length_upgrade_factor
 
 func get_upgrade_one_description(phase : int) -> String:
 	return "Upgrade one description\ncost: 10"

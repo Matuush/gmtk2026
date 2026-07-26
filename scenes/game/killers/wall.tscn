@@ -16,20 +16,6 @@ upgrade_two_costs = Array[int]([12, 13, 14])
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=1851654979]
 
-[node name="PreviewSprite" type="ColorRect" parent="." unique_id=1422414138]
-z_index = 1000
-offset_left = -80.0
-offset_top = -10.0
-offset_right = 80.0
-offset_bottom = 10.0
-mouse_filter = 2
-color = Color(0.7137255, 0, 0, 0.7529412)
-
-[node name="EffectSprite" type="ColorRect" parent="." unique_id=1656661389]
-z_index = 1000
-offset_left = -80.0
-offset_top = -10.0
-offset_right = 80.0
-offset_bottom = 10.0
-mouse_filter = 2
-color = Color(0, 0, 0, 1)
+[node name="DisplayRect" type="ColorRect" parent="." unique_id=639377426]
+offset_right = 40.0
+offset_bottom = 40.0
