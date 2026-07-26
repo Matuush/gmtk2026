@@ -1,0 +1,30 @@
+[gd_scene format=3 uid="uid://c5bid4qhcu3hl"]
+
+[ext_resource type="Script" uid="uid://cdfcunrorvbny" path="res://scenes/main_menu.gd" id="1_l6cm7"]
+
+[node name="MainMenu" type="Node2D" unique_id=1576969093]
+script = ExtResource("1_l6cm7")
+
+[node name="Background" type="ColorRect" parent="." unique_id=893512245]
+offset_right = 1280.0
+offset_bottom = 720.0
+color = Color(0.48402083, 0.29829484, 0.5011851, 1)
+
+[node name="NewGameButton" type="Button" parent="." unique_id=691930747]
+offset_left = 882.0
+offset_top = 449.0
+offset_right = 1106.0
+offset_bottom = 517.0
+text = "New Game"
+
+[node name="VolumeSlider" type="HSlider" parent="." unique_id=1372314508]
+offset_left = 889.0
+offset_top = 296.0
+offset_right = 1089.0
+offset_bottom = 369.0
+max_value = 1.0
+step = 0.01
+value = 1.0
+
+[connection signal="button_down" from="NewGameButton" to="." method="_on_new_game_button_button_down"]
+[connection signal="drag_ended" from="VolumeSlider" to="." method="_on_volume_slider_drag_ended"]

@@ -17,10 +17,13 @@ func _ready():
 	$KillerSelectionBox.make_items()
 	SignalManager.item_selected.connect(_on_item_selected)
 	SignalManager.enemy_count_changed.connect(_on_enemy_count_change)
-	SignalManager.enemy_count_changed.emit()
 	SignalManager.add_money.connect(_on_add_money)
-	SignalManager.add_money.emit(STARTING_CASH)
 	SignalManager.error_message.connect(_on_error_message)
+	
+func start_game() -> void:
+	SignalManager.add_money.emit(STARTING_CASH - money)
+	SignalManager.enemy_count_changed.emit()
+	$Simulation.new_game()
 
 func _process(_delta : float) -> void:
 	if Input.is_action_just_pressed("select_item_1"):

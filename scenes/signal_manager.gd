@@ -3,6 +3,9 @@ extends Node
 signal item_selected
 signal item_used
 
+signal change_game_state (new_state : main.game_state)
+signal volume_change (new_value : float)
+
 signal enemy_count_changed
 
 signal box_selection(button_id : int)

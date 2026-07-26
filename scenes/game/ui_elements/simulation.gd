@@ -13,7 +13,10 @@ static var killers : Array = []
 static var vabnicky : Array = []
 @export var amoeba_scene : PackedScene
 
-func _ready() -> void:
+func new_game() -> void:
+	enemies.clear()
+	killers.clear()
+	vabnicky.clear()
 	for i in range(INITIAL_AMOEBA_COUNT):
 		create_amoeba(get_random_spawn_location())
 
