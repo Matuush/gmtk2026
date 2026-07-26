@@ -5,6 +5,8 @@
 [ext_resource type="Texture2D" uid="uid://c7i3ksillai72" path="res://assets/game/killers/gun_icon.png" id="3_d4ain"]
 [ext_resource type="Texture2D" uid="uid://bjkknsx071q6" path="res://assets/game/ui/faster_icon.png" id="5_6xw62"]
 [ext_resource type="Texture2D" uid="uid://bcjj67jmnksoo" path="res://assets/game/ui/full_orb.png" id="5_d4ain"]
+[ext_resource type="Texture2D" uid="uid://cscco3jeus6gv" path="res://assets/game/killers/farter_preview.png" id="6_ldn46"]
+[ext_resource type="Texture2D" uid="uid://ujoy16irp8n8" path="res://assets/game/killers/farter_effect.png" id="7_6xw62"]
 
 [node name="Shooter" type="Node2D" unique_id=2022378077]
 script = ExtResource("1_6uktl")
@@ -17,30 +19,13 @@ upgrade_one_costs = Array[int]([20, 30, 40])
 upgrade_two_costs = Array[int]([20, 30, 40])
 metadata/_custom_type_script = "uid://cjq87fqmbir20"
 
-[node name="PreviewSprite" type="ColorRect" parent="." unique_id=745845582]
-anchors_preset = 8
-anchor_left = 0.5
-anchor_top = 0.5
-anchor_right = 0.5
-anchor_bottom = 0.5
-offset_left = -32.0
-offset_top = -32.0
-offset_right = 32.0
-offset_bottom = 32.0
-grow_horizontal = 2
-grow_vertical = 2
-mouse_filter = 2
-color = Color(0.7642344, 0.27401945, 0.13515374, 1)
-
-[node name="EffectSprite" type="ColorRect" parent="." unique_id=2015176171]
-offset_left = -32.0
-offset_top = -32.0
-offset_right = 32.0
-offset_bottom = 32.0
-mouse_filter = 2
-color = Color(1, 1, 0.44705883, 1)
-
 [node name="ShootTimer" type="Timer" parent="." unique_id=1254030444]
+
+[node name="PreviewSprite" type="Sprite2D" parent="." unique_id=539746822]
+texture = ExtResource("6_ldn46")
+
+[node name="EffectSprite" type="Sprite2D" parent="." unique_id=1742599358]
+texture = ExtResource("7_6xw62")
 
 [connection signal="shoot_interval_update" from="." to="." method="_on_shoot_interval_update"]
 [connection signal="timeout" from="ShootTimer" to="." method="_on_shoot_timer_timeout"]
