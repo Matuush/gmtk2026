@@ -10,13 +10,6 @@ var sprite_texture : Texture2D
 var color : float
 var health : float
 
-func generic_move(delta : float) -> void:
-	pass
-	#linear_velocity += Vector2(
-		#randf_range(-acceleration_factor, acceleration_factor) * delta,
-		#randf_range(-acceleration_factor, acceleration_factor) * delta
-	#)
-
 @abstract func die() -> void
 	
 @abstract func _init() -> void

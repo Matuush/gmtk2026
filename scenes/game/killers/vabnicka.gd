@@ -37,7 +37,7 @@ func sladke_vabeni(delta : float) -> void:
 		var sgn = 1
 		if (angle2 >= angle1 and angle2 < angle1 + PI) or (angle2 < angle1 - PI && angle2 >= angle1 - 2*PI):
 			sgn *= -1
-		enemy.linear_velocity = enemy.linear_velocity.rotated(vabnicka_strength * sgn)
+		enemy.linear_velocity = enemy.linear_velocity.rotated(60 * delta * vabnicka_strength * sgn)
 
 func _on_hover() -> void:
 	$PreviewSprite.visible = true

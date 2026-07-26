@@ -77,7 +77,6 @@ func multiply() -> void:
 	get_parent().create_amoeba(position)
 
 func _physics_process(_delta: float) -> void:
-	generic_move(_delta)
 	if state == amoeba_state.pairing:
 		pair_with_someone(_delta)
 	elif state == amoeba_state.waiting:
