@@ -48,11 +48,11 @@ func select_direction_to_closest_organism() -> Vector2:
 	return direction.normalized()
 
 func shoot_bullet() -> void:
-	print("Placing bullet")
 	if not placed:
 		return
 	if simulation.enemies.size() == 0:
 		return
+	print("Placing bullet")
 	var new_bullet = bullet_scene.instantiate()
 	var direction : Vector2 = select_direction_to_closest_organism()
 	new_bullet.linear_velocity = bullet_speed * direction
