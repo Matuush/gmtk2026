@@ -2,56 +2,172 @@
 
 [ext_resource type="Script" uid="uid://dul6gpjal1aus" path="res://scenes/game/ui_elements/simulation.gd" id="1_ictt6"]
 [ext_resource type="PackedScene" uid="uid://c3tj650y80uvk" path="res://scenes/game/organisms/amoeba.tscn" id="2_f50vh"]
+[ext_resource type="Texture2D" uid="uid://1njlj0x232nj" path="res://assets/game/simulation.svg" id="3_yhuvg"]
 
 [sub_resource type="PhysicsMaterial" id="PhysicsMaterial_vdofx"]
 friction = 0.05
 bounce = 0.95
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_oyn23"]
-size = Vector2(32, 480)
+size = Vector2(32, 130.17804)
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_fxtjd"]
-size = Vector2(736, 32)
+size = Vector2(183, 32)
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_0wu85"]
-size = Vector2(32, 480)
+size = Vector2(32, 146.5)
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_7m1al"]
-size = Vector2(736, 32)
+size = Vector2(155, 32)
+
+[sub_resource type="ConvexPolygonShape2D" id="ConvexPolygonShape2D_yhuvg"]
+points = PackedVector2Array(0, 0)
 
 [node name="Simulation" type="Node2D" unique_id=108406509]
 script = ExtResource("1_ictt6")
 amoeba_scene = ExtResource("2_f50vh")
 
-[node name="Background" type="ColorRect" parent="." unique_id=1090348840]
-offset_right = 799.0
-offset_bottom = 478.0
-color = Color(0.66290987, 0.46607208, 0.47471946, 1)
+[node name="Sprite2D" type="Sprite2D" parent="." unique_id=1390282574]
+position = Vector2(471, 252)
+scale = Vector2(0.5003448, 0.49951726)
+texture = ExtResource("3_yhuvg")
 
 [node name="Borders" type="StaticBody2D" parent="." unique_id=1126762937]
 physics_material_override = SubResource("PhysicsMaterial_vdofx")
 
 [node name="Left" type="CollisionShape2D" parent="Borders" unique_id=1624267258]
-position = Vector2(16, 240)
+position = Vector2(351.14975, -94.34699)
+rotation = 1.2776959
 shape = SubResource("RectangleShape2D_oyn23")
 
 [node name="Up" type="CollisionShape2D" parent="Borders" unique_id=712990757]
-position = Vector2(400, 16)
+position = Vector2(467, -114)
 shape = SubResource("RectangleShape2D_fxtjd")
 
 [node name="Right" type="CollisionShape2D" parent="Borders" unique_id=1910349576]
-position = Vector2(784, 240)
+position = Vector2(561, -103)
+rotation = 1.799234
+shape = SubResource("RectangleShape2D_0wu85")
+
+[node name="Right2" type="CollisionShape2D" parent="Borders" unique_id=1992760406]
+position = Vector2(654, -67.00006)
+rotation = 2.002994
+shape = SubResource("RectangleShape2D_0wu85")
+
+[node name="Right3" type="CollisionShape2D" parent="Borders" unique_id=1008985180]
+position = Vector2(699, -35)
+rotation = -0.91750866
+shape = SubResource("RectangleShape2D_0wu85")
+
+[node name="Right4" type="CollisionShape2D" parent="Borders" unique_id=1692339220]
+position = Vector2(757, 22.999996)
+rotation = -0.6593673
+scale = Vector2(0.99999994, 0.99999994)
+shape = SubResource("RectangleShape2D_0wu85")
+
+[node name="Right5" type="CollisionShape2D" parent="Borders" unique_id=1414781305]
+position = Vector2(801, 94.000015)
+rotation = -0.40122598
+shape = SubResource("RectangleShape2D_0wu85")
+
+[node name="Right6" type="CollisionShape2D" parent="Borders" unique_id=17979315]
+position = Vector2(833, 194)
+rotation = -0.14551115
+shape = SubResource("RectangleShape2D_0wu85")
+
+[node name="Right7" type="CollisionShape2D" parent="Borders" unique_id=1633385715]
+position = Vector2(833, 305)
+rotation = 0.14762022
+shape = SubResource("RectangleShape2D_0wu85")
+
+[node name="Right8" type="CollisionShape2D" parent="Borders" unique_id=376030878]
+position = Vector2(798.00006, 417)
+rotation = 0.4338961
+scale = Vector2(0.99999994, 0.99999994)
+shape = SubResource("RectangleShape2D_0wu85")
+
+[node name="Right9" type="CollisionShape2D" parent="Borders" unique_id=1425890234]
+position = Vector2(729, 513)
+rotation = 0.7201719
+scale = Vector2(0.99999994, 0.99999994)
+shape = SubResource("RectangleShape2D_0wu85")
+
+[node name="Right10" type="CollisionShape2D" parent="Borders" unique_id=1388799525]
+position = Vector2(647, 574.00006)
+rotation = 1.0064478
+scale = Vector2(0.99999994, 0.99999994)
+shape = SubResource("RectangleShape2D_0wu85")
+
+[node name="Right11" type="CollisionShape2D" parent="Borders" unique_id=722047004]
+position = Vector2(549, 610)
+rotation = 1.3110443
+scale = Vector2(0.99999994, 0.99999994)
+shape = SubResource("RectangleShape2D_0wu85")
+
+[node name="Right12" type="CollisionShape2D" parent="Borders" unique_id=1376296968]
+position = Vector2(447.00006, 617.00006)
+rotation = 1.5789996
+scale = Vector2(0.9999999, 0.9999999)
+shape = SubResource("RectangleShape2D_0wu85")
+
+[node name="Right13" type="CollisionShape2D" parent="Borders" unique_id=1882796234]
+position = Vector2(346.00003, 597)
+rotation = 1.8652755
+scale = Vector2(0.9999999, 0.9999999)
+shape = SubResource("RectangleShape2D_0wu85")
+
+[node name="Right14" type="CollisionShape2D" parent="Borders" unique_id=970998698]
+position = Vector2(266.00003, 556)
+rotation = -4.147607
+scale = Vector2(0.9999998, 0.9999998)
+shape = SubResource("RectangleShape2D_0wu85")
+
+[node name="Right15" type="CollisionShape2D" parent="Borders" unique_id=1690244512]
+position = Vector2(199.99998, 498)
+rotation = -0.7308319
+scale = Vector2(0.99999976, 0.99999976)
+shape = SubResource("RectangleShape2D_0wu85")
+
+[node name="Right16" type="CollisionShape2D" parent="Borders" unique_id=325400151]
+position = Vector2(138.00002, 405.00003)
+rotation = -0.43448016
+scale = Vector2(0.99999976, 0.99999976)
+shape = SubResource("RectangleShape2D_0wu85")
+
+[node name="Right17" type="CollisionShape2D" parent="Borders" unique_id=1148228986]
+position = Vector2(108.99999, 195)
+rotation = 3.284525
+scale = Vector2(0.99999976, 0.99999976)
+shape = SubResource("RectangleShape2D_0wu85")
+
+[node name="Right18" type="CollisionShape2D" parent="Borders" unique_id=1645020456]
+position = Vector2(134, 110)
+rotation = -2.7038164
+scale = Vector2(0.9999997, 0.9999997)
+shape = SubResource("RectangleShape2D_0wu85")
+
+[node name="Right19" type="CollisionShape2D" parent="Borders" unique_id=37591476]
+position = Vector2(108.99999, 303.99997)
+rotation = -0.15231092
+scale = Vector2(0.99999964, 0.99999964)
+shape = SubResource("RectangleShape2D_0wu85")
+
+[node name="Right20" type="CollisionShape2D" parent="Borders" unique_id=746915854]
+position = Vector2(190, 18.000008)
+rotation = 0.7035485
+scale = Vector2(0.99999934, 0.99999934)
 shape = SubResource("RectangleShape2D_0wu85")
 
 [node name="Down" type="CollisionShape2D" parent="Borders" unique_id=1907110020]
-position = Vector2(400, 464)
+position = Vector2(267, -51.000008)
+rotation = -0.58344275
 shape = SubResource("RectangleShape2D_7m1al")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Borders" unique_id=1494546997]
+shape = SubResource("ConvexPolygonShape2D_yhuvg")
 
 [node name="SpawnTimer" type="Timer" parent="." unique_id=345211012]
 wait_time = 0.1
 autostart = true
 
-[connection signal="gui_input" from="Background" to="." method="_on_background_gui_input"]
-[connection signal="mouse_entered" from="Background" to="." method="_on_background_mouse_entered"]
-[connection signal="mouse_exited" from="Background" to="." method="_on_background_mouse_exited"]
 [connection signal="timeout" from="SpawnTimer" to="." method="_on_spawn_timer_timeout"]
