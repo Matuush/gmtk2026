@@ -8,6 +8,7 @@ func _ready() -> void:
 
 func _on_new_game_button_button_down() -> void:
 	SignalManager.change_game_state.emit(main.game_state.game)
+	AudioManager.play_click_sound()
 
 func _on_volume_slider_drag_ended(value_changed: bool) -> void:
 	#print("Changing to : ", volume_slider.value)
@@ -27,10 +28,11 @@ func show_settings() -> void:
 
 func _on_settings_buton_button_down() -> void:
 	show_settings()
+	AudioManager.play_click_sound()
 
 func _on_back_button_button_down() -> void:
 	hide_settings()
-
+	AudioManager.play_click_sound()
 
 func _on_volume_try_button_down() -> void:
 	AudioManager.play_purchase_sound()

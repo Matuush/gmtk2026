@@ -7,6 +7,7 @@
 [ext_resource type="AudioStream" uid="uid://csn0iiri8jki7" path="res://assets/sfx/wall.wav" id="5_aoitu"]
 [ext_resource type="AudioStream" uid="uid://m1wshqu2cy7e" path="res://assets/sfx/purchase.wav" id="6_njtn3"]
 [ext_resource type="AudioStream" uid="uid://brmhou4rxbobu" path="res://assets/sfx/awooga.wav" id="7_kq7b2"]
+[ext_resource type="AudioStream" uid="uid://citjs2vykia4s" path="res://assets/sfx/button_click.wav" id="8_02gw7"]
 
 [node name="AudioManager" type="Node" unique_id=2144007401]
 script = ExtResource("1_8qd8g")
@@ -34,3 +35,6 @@ max_polyphony = 4
 
 [node name="VabnickaStream" type="AudioStreamPlayer" parent="." unique_id=844822162]
 stream = ExtResource("7_kq7b2")
+
+[node name="ClickStream" type="AudioStreamPlayer" parent="." unique_id=1018320210]
+stream = ExtResource("8_02gw7")

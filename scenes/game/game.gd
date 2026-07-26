@@ -103,7 +103,9 @@ func _on_error_message_timer_timeout() -> void:
 func _on_retry_button_button_down() -> void:
 	start_game()
 	SignalManager.on_new_game.emit()
+	AudioManager.play_click_sound()
 
 func _on_menu_button_button_down() -> void:
 	$Simulation.delete_old_game()
 	SignalManager.change_game_state.emit(main.game_state.menu)
+	AudioManager.play_click_sound()

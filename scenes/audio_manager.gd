@@ -6,6 +6,7 @@ var bacteria_base_volue : float
 var wall_base_volue : float
 var purchase_base_volue : float
 var vabnicka_base_volue : float
+var click_base_volue : float
 
 func _ready() -> void:
 	sanitizer_base_volue = $SanitizerStream.volume_linear
@@ -14,6 +15,7 @@ func _ready() -> void:
 	wall_base_volue = $WallStream.volume_linear
 	purchase_base_volue = $PurchaseStream.volume_linear
 	vabnicka_base_volue = $VabnickaStream.volume_linear
+	click_base_volue = $ClickStream.volume_linear
 	SignalManager.volume_change.connect(volume_change)
 
 func volume_change(new_coeff : float) -> void:
@@ -23,6 +25,7 @@ func volume_change(new_coeff : float) -> void:
 	$WallStream.volume_linear = wall_base_volue * new_coeff
 	$PurchaseStream.volume_linear = purchase_base_volue * new_coeff
 	$VabnickaStream.volume_linear = vabnicka_base_volue * new_coeff
+	$ClickStream.volume_linear = click_base_volue * new_coeff
 
 func play_sanitizer_sound() -> void:
 	$SanitizerStream.play()
@@ -42,3 +45,6 @@ func play_vabnicka_sound() -> void:
 
 func play_purchase_sound() -> void:
 	$PurchaseStream.play()
+
+func play_click_sound() -> void:
+	$ClickStream.play()
