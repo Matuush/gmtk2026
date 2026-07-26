@@ -80,10 +80,10 @@ func _on_enemy_count_change() -> void:
 	var new_enemy_count : int = simulation.enemies.size()
 	$HUDBox/EnemyCountLabel.text = " %d" % new_enemy_count
 	if new_enemy_count == 0:
-		game_over_reason = "All your shit dried"
+		game_over_reason = "All your bacterias died, your research bankrupted"
 		game_over()
 	elif new_enemy_count == simulation.AMOEBA_LIMIT:
-		game_over_reason = "They bred too much"
+		game_over_reason = "Your bacterias bred too much and exploded the planet"
 		game_over()
 
 func _on_add_money(added_money : int) -> void:
